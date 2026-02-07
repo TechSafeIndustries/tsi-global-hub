@@ -2,336 +2,327 @@
 <html lang="en-AU">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="TechSafe Industries governance framework - Human-in-the-Loop controls for high-risk industries">
-    <title>Governance Framework | TechSafe Industries</title>
-    <link rel="icon" type="image/png" href="../logo_tsi_bbg01.png">
-    <link rel="stylesheet" href="../styles-business.css">
-    <style>
-        .comparison-table {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--color-grey-border);
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            margin: var(--space-2xl) 0;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Assessment (Pre-Decision) - TechSafe Industries">
+  <title>Assessment (Pre-Decision) | TechSafe Industries</title>
+  <link rel="icon" type="image/png" href="../logo_tsi_bbg01.png">
+  <link rel="stylesheet" href="../styles-business.css">
+  <style>
+    /* ASSESSMENT PAGE - PRE-DECISION INPUTS ONLY */
 
-        .comparison-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            border-bottom: 1px solid var(--color-grey-border);
-        }
+    .assessment-hero {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 120px 24px 48px;
+      text-align: center;
+    }
 
-        .comparison-row:last-child {
-            border-bottom: none;
-        }
+    .assessment-title {
+      font-size: 2.5rem;
+      color: var(--color-white);
+      margin-bottom: var(--space-md);
+    }
 
-        .comparison-row.header {
-            background: rgba(45, 184, 249, 0.1);
-        }
+    .assessment-subtitle {
+      font-size: 1.125rem;
+      color: var(--color-grey);
+      max-width: 700px;
+      margin: 0 auto var(--space-xl);
+      line-height: 1.7;
+    }
 
-        .comparison-cell {
-            padding: var(--space-lg);
-            color: var(--color-grey-light);
-            border-right: 1px solid var(--color-grey-border);
-        }
+    .authority-banner {
+      background: rgba(45, 184, 249, 0.05);
+      border: 1px solid rgba(45, 184, 249, 0.2);
+      border-radius: var(--border-radius);
+      padding: var(--space-lg);
+      max-width: 800px;
+      margin: 0 auto var(--space-3xl);
+    }
 
-        .comparison-cell:last-child {
-            border-right: none;
-        }
+    .authority-banner-title {
+      font-size: 1.25rem;
+      color: var(--color-white);
+      margin-bottom: var(--space-sm);
+    }
 
-        .comparison-row.header .comparison-cell {
-            color: var(--color-white);
-            font-weight: 600;
-            font-size: 1.05rem;
-        }
+    .authority-banner-body {
+      color: var(--color-grey-light);
+      line-height: 1.7;
+      margin-bottom: 0;
+    }
 
-        .emphasis-block {
-            background: rgba(45, 184, 249, 0.05);
-            border: 2px solid var(--color-blue);
-            border-radius: var(--border-radius);
-            padding: var(--space-2xl);
-            margin: var(--space-2xl) 0;
-        }
+    .assessment-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
 
-        .emphasis-title {
-            font-size: 1.75rem;
-            color: var(--color-blue);
-            margin-bottom: var(--space-md);
-            text-align: center;
-        }
+    .assessment-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+      gap: 2rem;
+      margin-bottom: var(--space-3xl);
+    }
 
-        .emphasis-text {
-            color: var(--color-grey-light);
-            line-height: 1.7;
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
-        }
+    .assessment-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--color-grey-border);
+      border-radius: var(--border-radius);
+      padding: var(--space-xl);
+      transition: var(--transition);
+    }
 
-        .disclaimer-block {
-            background: rgba(239, 68, 68, 0.05);
-            border: 1px solid rgba(239, 68, 68, 0.3);
-            border-radius: var(--border-radius);
-            padding: var(--space-xl);
-            margin: var(--space-2xl) 0;
-        }
+    .assessment-card:hover {
+      background: rgba(255, 255, 255, 0.04);
+      border-color: rgba(45, 184, 249, 0.3);
+    }
 
-        .disclaimer-title {
-            font-size: 1.25rem;
-            color: #EF4444;
-            margin-bottom: var(--space-md);
-        }
+    .assessment-card-title {
+      font-size: 1.5rem;
+      color: var(--color-white);
+      margin-bottom: var(--space-lg);
+    }
 
-        .disclaimer-text {
-            color: var(--color-grey);
-            line-height: 1.7;
-            font-size: 0.95rem;
-        }
+    .question-group {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-bottom: var(--space-lg);
+    }
 
-        @media (max-width: 767px) {
-            .comparison-row {
-                grid-template-columns: 1fr;
-            }
+    .question-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
 
-            .comparison-cell {
-                border-right: none;
-                border-bottom: 1px solid var(--color-grey-border);
-            }
+    .question-label {
+      font-size: 0.95rem;
+      color: var(--color-grey-light);
+      font-weight: 500;
+    }
 
-            .comparison-cell:last-child {
-                border-bottom: none;
-            }
-        }
-    </style>
+    .question-input {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--color-grey-border);
+      border-radius: 4px;
+      padding: 0.75rem 1rem;
+      color: var(--color-grey);
+      font-family: var(--font-primary);
+      font-size: 0.95rem;
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
+
+    .card-footer {
+      padding-top: var(--space-md);
+      border-top: 1px solid var(--color-grey-border);
+      font-size: 0.875rem;
+      color: var(--color-grey);
+      font-style: italic;
+    }
+
+    .status-strip {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--color-grey-border);
+      border-radius: var(--border-radius);
+      padding: var(--space-lg);
+      text-align: center;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .status-strip-headline {
+      font-size: 1.25rem;
+      color: var(--color-white);
+      margin-bottom: var(--space-sm);
+    }
+
+    .status-strip-flow {
+      font-size: 1rem;
+      color: var(--color-grey-light);
+      margin-bottom: var(--space-sm);
+    }
+
+    .status-strip-note {
+      font-size: 0.875rem;
+      color: var(--color-grey);
+      font-style: italic;
+      margin-bottom: 0;
+    }
+
+    @media (max-width: 768px) {
+      .assessment-cards {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-    <nav class="nav-container" id="mainNav">
-        <div class="nav-wrapper">
-            <a href="../" class="nav-brand">
-                <img src="../logo_tsi_bbg01.png" alt="TechSafe Industries" class="brand-logo">
-            </a>
-            <ul class="nav-menu">
-                <li><a href="#pillars" class="nav-link">Pillars</a></li>
-                <li><a href="#human-loop" class="nav-link">Human-in-the-Loop</a></li>
-                <li><a href="#controls" class="nav-link">Controls vs Automation</a></li>
-                <li><a href="#disclaimer" class="nav-link">Disclaimer</a></li>
-            </ul>
+  <nav class="nav-container" id="mainNav">
+    <div class="nav-wrapper">
+      <a href="../" class="nav-brand">
+        <img src="../logo_tsi_bbg01.png" alt="TechSafe Industries" class="brand-logo">
+      </a>
+      <ul class="nav-menu">
+        <li><a href="../#industries" class="nav-link">Industries</a></li>
+        <li><a href="../diagnostic/signals.html" class="nav-link">Diagnostic</a></li>
+        <li><a href="./" class="nav-link">Assessment</a></li>
+        <li><a href="../governance/" class="nav-link">Governance</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="assessment-hero">
+    <h1 class="assessment-title">Assessment (Pre-Decision)</h1>
+    <p class="assessment-subtitle">
+      Capture structured inputs for governance review. No scoring. No automated outcomes.
+    </p>
+
+    <div class="hero-cta-group">
+      <a href="../governance/" class="btn-primary">Proceed to Governance</a>
+      <a href="../diagnostic/signals.html" class="btn-secondary">Back to Diagnostic Signals</a>
+    </div>
+  </div>
+
+  <div class="assessment-container">
+
+    <!-- Authority Banner -->
+    <div class="authority-banner">
+      <h2 class="authority-banner-title">Assessment is not a decision layer</h2>
+      <p class="authority-banner-body">
+        This page captures structured responses only. All evaluation, thresholds, approvals, and evidence authority are
+        governed in TechSafeAI under human oversight.
+      </p>
+    </div>
+
+    <!-- Assessment Cards -->
+    <div class="assessment-cards">
+
+      <!-- Card 1: Site Context -->
+      <div class="assessment-card">
+        <h3 class="assessment-card-title">Site Context</h3>
+        <div class="question-group">
+          <div class="question-item">
+            <label class="question-label">Site / Facility name</label>
+            <input type="text" class="question-input" placeholder="(placeholder)" disabled>
+          </div>
+          <div class="question-item">
+            <label class="question-label">Operation type</label>
+            <input type="text" class="question-input" placeholder="(placeholder)" disabled>
+          </div>
+          <div class="question-item">
+            <label class="question-label">Shift / crew</label>
+            <input type="text" class="question-input" placeholder="(placeholder)" disabled>
+          </div>
+          <div class="question-item">
+            <label class="question-label">Contractors involved?</label>
+            <input type="text" class="question-input" placeholder="(placeholder)" disabled>
+          </div>
         </div>
-    </nav>
+        <div class="card-footer">Status: Awaiting Governance Review</div>
+      </div>
 
-    <section class="hero-section">
-        <div class="hero-container">
-            <div class="hero-content">
-                <h1 class="hero-title">Governance Framework</h1>
-                <p class="hero-subtitle">
-                    [GOVERNANCE_FRAMEWORK_DESCRIPTION]
-                </p>
-            </div>
+      <!-- Card 2: Hazard & Work Context -->
+      <div class="assessment-card">
+        <h3 class="assessment-card-title">Hazard & Work Context</h3>
+        <div class="question-group">
+          <div class="question-item">
+            <label class="question-label">Work type</label>
+            <input type="text" class="question-input" placeholder="(placeholder)" disabled>
+          </div>
+          <div class="question-item">
+            <label class="question-label">Primary hazard category</label>
+            <input type="text" class="question-input" placeholder="(placeholder)" disabled>
+          </div>
+          <div class="question-item">
+            <label class="question-label">SIMOPS present?</label>
+            <input type="text" class="question-input" placeholder="(placeholder)" disabled>
+          </div>
+          <div class="question-item">
+            <label class="question-label">Isolation / PTW required?</label>
+            <input type="text" class="question-input" placeholder="(placeholder)" disabled>
+          </div>
         </div>
-    </section>
+        <div class="card-footer">Status: Awaiting Governance Review</div>
+      </div>
 
-    <!-- Governance Pillars -->
-    <section id="pillars" class="framework-section">
-        <div class="section-container">
-            <div class="section-header">
-                <h2 class="section-title">Governance Pillars</h2>
-                <p class="section-description">[PILLARS_DESCRIPTION]</p>
-            </div>
-
-            <div class="framework-grid">
-                <div class="framework-card">
-                    <div class="framework-icon">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
-                            <path d="M2 17l10 5 10-5"></path>
-                            <path d="M2 12l10 5 10-5"></path>
-                        </svg>
-                    </div>
-                    <h3 class="framework-card-title">[PILLAR_1_TITLE]</h3>
-                    <p class="framework-card-description">[PILLAR_1_DESCRIPTION]</p>
-                </div>
-
-                <div class="framework-card">
-                    <div class="framework-icon">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <polyline points="16 18 22 12 16 6"></polyline>
-                            <polyline points="8 6 2 12 8 18"></polyline>
-                        </svg>
-                    </div>
-                    <h3 class="framework-card-title">[PILLAR_2_TITLE]</h3>
-                    <p class="framework-card-description">[PILLAR_2_DESCRIPTION]</p>
-                </div>
-
-                <div class="framework-card">
-                    <div class="framework-icon">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                            <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                        </svg>
-                    </div>
-                    <h3 class="framework-card-title">[PILLAR_3_TITLE]</h3>
-                    <p class="framework-card-description">[PILLAR_3_DESCRIPTION]</p>
-                </div>
-            </div>
+      <!-- Card 3: Controls & Verification (Non-scored) -->
+      <div class="assessment-card">
+        <h3 class="assessment-card-title">Controls & Verification (Non-scored)</h3>
+        <div class="question-group">
+          <div class="question-item">
+            <label class="question-label">Controls identified</label>
+            <input type="text" class="question-input" placeholder="(placeholder)" disabled>
+          </div>
+          <div class="question-item">
+            <label class="question-label">Control verification evidence available?</label>
+            <input type="text" class="question-input" placeholder="(placeholder)" disabled>
+          </div>
+          <div class="question-item">
+            <label class="question-label">Barriers impacted?</label>
+            <input type="text" class="question-input" placeholder="(placeholder)" disabled>
+          </div>
         </div>
-    </section>
+        <div class="card-footer">Status: Awaiting Governance Review</div>
+      </div>
 
-    <!-- Human-in-the-Loop Emphasis -->
-    <section id="human-loop" class="industries-section">
-        <div class="section-container">
-            <div class="emphasis-block">
-                <h2 class="emphasis-title">Human-in-the-Loop</h2>
-                <p class="emphasis-text">
-                    [HUMAN_IN_LOOP_PRINCIPLE_TEXT]
-                </p>
-            </div>
-
-            <div class="engage-grid">
-                <div class="engage-card">
-                    <h3 class="engage-card-title">[HITL_ELEMENT_1_TITLE]</h3>
-                    <p class="engage-card-intro">[HITL_ELEMENT_1_DESCRIPTION]</p>
-                </div>
-
-                <div class="engage-card">
-                    <h3 class="engage-card-title">[HITL_ELEMENT_2_TITLE]</h3>
-                    <p class="engage-card-intro">[HITL_ELEMENT_2_DESCRIPTION]</p>
-                </div>
-
-                <div class="engage-card">
-                    <h3 class="engage-card-title">[HITL_ELEMENT_3_TITLE]</h3>
-                    <p class="engage-card-intro">[HITL_ELEMENT_3_DESCRIPTION]</p>
-                </div>
-            </div>
+      <!-- Card 4: Incident / Trigger (If Applicable) -->
+      <div class="assessment-card">
+        <h3 class="assessment-card-title">Incident / Trigger (If Applicable)</h3>
+        <div class="question-group">
+          <div class="question-item">
+            <label class="question-label">Related incident ID</label>
+            <input type="text" class="question-input" placeholder="(placeholder)" disabled>
+          </div>
+          <div class="question-item">
+            <label class="question-label">Trigger type (manual / inspection / device signal)</label>
+            <input type="text" class="question-input" placeholder="(placeholder)" disabled>
+          </div>
+          <div class="question-item">
+            <label class="question-label">Timestamp received</label>
+            <input type="text" class="question-input" placeholder="(placeholder)" disabled>
+          </div>
         </div>
-    </section>
+        <div class="card-footer">Status: Awaiting Governance Review</div>
+      </div>
 
-    <!-- Controls vs Automation Comparison -->
-    <section id="controls" class="framework-section">
-        <div class="section-container">
-            <div class="section-header">
-                <h2 class="section-title">Controls vs Automation</h2>
-                <p class="section-description">[CONTROLS_VS_AUTOMATION_INTRO]</p>
-            </div>
+    </div>
 
-            <div class="comparison-table">
-                <div class="comparison-row header">
-                    <div class="comparison-cell">Function</div>
-                    <div class="comparison-cell">TechSafe Controls</div>
-                    <div class="comparison-cell">Prohibited Automation</div>
-                </div>
+    <!-- Status Strip -->
+    <div class="status-strip">
+      <h3 class="status-strip-headline">System Flow (Locked)</h3>
+      <p class="status-strip-flow">Inputs → Assessment → Governance → Visibility. No automation without oversight.</p>
+      <p class="status-strip-note">Assessment never issues approvals, rejections, or compliance claims.</p>
+    </div>
 
-                <div class="comparison-row">
-                    <div class="comparison-cell"><strong>[FUNCTION_1]</strong></div>
-                    <div class="comparison-cell">[CONTROL_1]</div>
-                    <div class="comparison-cell">[PROHIBITED_1]</div>
-                </div>
+  </div>
 
-                <div class="comparison-row">
-                    <div class="comparison-cell"><strong>[FUNCTION_2]</strong></div>
-                    <div class="comparison-cell">[CONTROL_2]</div>
-                    <div class="comparison-cell">[PROHIBITED_2]</div>
-                </div>
+  <footer class="footer">
+    <div class="footer-content">
+      <p class="footer-tagline">Intelligence & Governance Partner for High-Risk Industries</p>
+      <p class="footer-legal">
+        TechSafe Industries provides advisory, systems, and assurance services. We do not provide legal advice or
+        guarantee regulatory compliance outcomes.
+      </p>
+      <p class="footer-copyright">© 2026 TechSafe Industries. All rights reserved.</p>
+    </div>
+  </footer>
 
-                <div class="comparison-row">
-                    <div class="comparison-cell"><strong>[FUNCTION_3]</strong></div>
-                    <div class="comparison-cell">[CONTROL_3]</div>
-                    <div class="comparison-cell">[PROHIBITED_3]</div>
-                </div>
-
-                <div class="comparison-row">
-                    <div class="comparison-cell"><strong>[FUNCTION_4]</strong></div>
-                    <div class="comparison-cell">[CONTROL_4]</div>
-                    <div class="comparison-cell">[PROHIBITED_4]</div>
-                </div>
-
-                <div class="comparison-row">
-                    <div class="comparison-cell"><strong>[FUNCTION_5]</strong></div>
-                    <div class="comparison-cell">[CONTROL_5]</div>
-                    <div class="comparison-cell">[PROHIBITED_5]</div>
-                </div>
-            </div>
-
-            <div style="text-align: center; margin-top: var(--space-xl);">
-                <p style="color: var(--color-grey); font-style: italic; max-width: 700px; margin: 0 auto;">
-                    [CONTROLS_FOOTNOTE]
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Disclaimer Block -->
-    <section id="disclaimer" class="industries-section">
-        <div class="section-container">
-            <div class="disclaimer-block">
-                <h3 class="disclaimer-title">Important Disclaimer</h3>
-                <div class="disclaimer-text">
-                    <p><strong>[DISCLAIMER_PARA_1_TITLE]</strong></p>
-                    <p>[DISCLAIMER_PARA_1_TEXT]</p>
-
-                    <p style="margin-top: var(--space-md);"><strong>[DISCLAIMER_PARA_2_TITLE]</strong></p>
-                    <p>[DISCLAIMER_PARA_2_TEXT]</p>
-
-                    <p style="margin-top: var(--space-md);"><strong>[DISCLAIMER_PARA_3_TITLE]</strong></p>
-                    <p>[DISCLAIMER_PARA_3_TEXT]</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="engage-section">
-        <div class="section-container">
-            <div class="section-header">
-                <h2 class="section-title">Implement Governed Controls</h2>
-                <p class="section-description">Ready to strengthen your governance framework?</p>
-            </div>
-
-            <div class="hero-cta-group">
-                <a href="../assessment/" class="btn-primary">Request Assessment</a>
-                <a href="../solutions/" class="btn-secondary">Explore Solutions</a>
-            </div>
-        </div>
-    </section>
-
-    <footer class="footer">
-        <div class="footer-content">
-            <p class="footer-tagline">Intelligence &amp; Governance Partner for High-Risk Industries</p>
-            <p class="footer-legal">
-                TechSafe Industries provides advisory, systems, and assurance services. We do not provide legal advice
-                or guarantee regulatory compliance outcomes.
-            </p>
-            <p class="footer-copyright">© 2026 TechSafe Industries. All rights reserved.</p>
-        </div>
-    </footer>
-
-    <script>
-        window.addEventListener('scroll', function () {
-            const nav = document.getElementById('mainNav');
-            if (window.scrollY > 50) {
-                nav.classList.add('compact');
-            } else {
-                nav.classList.remove('compact');
-            }
-        });
-
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    e.preventDefault();
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            });
-        });
-    </script>
+  <script>
+    window.addEventListener('scroll', function () {
+      const nav = document.getElementById('mainNav');
+      if (window.scrollY > 50) {
+        nav.classList.add('compact');
+      } else {
+        nav.classList.remove('compact');
+      }
+    });
+  </script>
 
 </body>
 
