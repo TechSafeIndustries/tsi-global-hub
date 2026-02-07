@@ -2,485 +2,327 @@
 <html lang="en-AU">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="HSE Business Assessment from TechSafe Industries">
-    <title>HSE Business Assessment | TechSafe Industries</title>
-    <link rel="icon" type="image/png" href="../logo_tsi_bbg01.png">
-    <link rel="stylesheet" href="../styles-business.css">
-    <style>
-        .assessment-container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 120px 24px 80px;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Assessment (Pre-Decision) - TechSafe Industries">
+  <title>Assessment (Pre-Decision) | TechSafe Industries</title>
+  <link rel="icon" type="image/png" href="../logo_tsi_bbg01.png">
+  <link rel="stylesheet" href="../styles-business.css">
+  <style>
+    /* ASSESSMENT PAGE - PRE-DECISION INPUTS ONLY */
 
-        .form-section {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--color-grey-border);
-            border-radius: var(--border-radius);
-            padding: var(--space-xl);
-            margin-bottom: var(--space-xl);
-        }
+    .assessment-hero {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 120px 24px 48px;
+      text-align: center;
+    }
 
-        .form-section-title {
-            font-size: 1.5rem;
-            color: var(--color-white);
-            margin-bottom: var(--space-lg);
-            padding-bottom: var(--space-md);
-            border-bottom: 1px solid var(--color-grey-border);
-        }
+    .assessment-title {
+      font-size: 2.5rem;
+      color: var(--color-white);
+      margin-bottom: var(--space-md);
+    }
 
-        .form-group {
-            margin-bottom: var(--space-lg);
-        }
+    .assessment-subtitle {
+      font-size: 1.125rem;
+      color: var(--color-grey);
+      max-width: 700px;
+      margin: 0 auto var(--space-xl);
+      line-height: 1.7;
+    }
 
-        .form-group label {
-            display: block;
-            color: var(--color-grey-light);
-            font-weight: 500;
-            margin-bottom: 0.5rem;
-            font-size: 0.95rem;
-        }
+    .authority-banner {
+      background: rgba(45, 184, 249, 0.05);
+      border: 1px solid rgba(45, 184, 249, 0.2);
+      border-radius: var(--border-radius);
+      padding: var(--space-lg);
+      max-width: 800px;
+      margin: 0 auto var(--space-3xl);
+    }
 
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            background-color: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--color-grey-border);
-            border-radius: 4px;
-            padding: 0.875rem 1rem;
-            color: var(--color-white);
-            font-family: var(--font-primary);
-            font-size: 1rem;
-            transition: var(--transition);
-        }
+    .authority-banner-title {
+      font-size: 1.25rem;
+      color: var(--color-white);
+      margin-bottom: var(--space-sm);
+    }
 
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--color-blue);
-            background-color: rgba(255, 255, 255, 0.08);
-        }
+    .authority-banner-body {
+      color: var(--color-grey-light);
+      line-height: 1.7;
+      margin-bottom: 0;
+    }
 
-        .form-group input.error,
-        .form-group select.error,
-        .form-group textarea.error {
-            border-color: #EF4444;
-        }
+    .assessment-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
 
-        .form-group textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
+    .assessment-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+      gap: 2rem;
+      margin-bottom: var(--space-3xl);
+    }
 
-        .field-hint {
-            font-size: 0.85rem;
-            color: var(--color-grey);
-            margin-top: 0.25rem;
-        }
+    .assessment-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--color-grey-border);
+      border-radius: var(--border-radius);
+      padding: var(--space-xl);
+      transition: var(--transition);
+    }
 
-        .error-message {
-            color: #EF4444;
-            font-size: 0.85rem;
-            margin-top: 0.25rem;
-            display: none;
-        }
+    .assessment-card:hover {
+      background: rgba(255, 255, 255, 0.04);
+      border-color: rgba(45, 184, 249, 0.3);
+    }
 
-        .error-message.visible {
-            display: block;
-        }
+    .assessment-card-title {
+      font-size: 1.5rem;
+      color: var(--color-white);
+      margin-bottom: var(--space-lg);
+    }
 
-        .required {
-            color: #EF4444;
-        }
+    .question-group {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-bottom: var(--space-lg);
+    }
 
-        .checkbox-group {
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-        }
+    .question-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
 
-        .checkbox-item {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
+    .question-label {
+      font-size: 0.95rem;
+      color: var(--color-grey-light);
+      font-weight: 500;
+    }
 
-        .checkbox-item input[type="checkbox"] {
-            width: auto;
-            margin: 0;
-        }
+    .question-input {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--color-grey-border);
+      border-radius: 4px;
+      padding: 0.75rem 1rem;
+      color: var(--color-grey);
+      font-family: var(--font-primary);
+      font-size: 0.95rem;
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
 
-        .checkbox-item label {
-            margin: 0;
-            font-weight: 400;
-        }
+    .card-footer {
+      padding-top: var(--space-md);
+      border-top: 1px solid var(--color-grey-border);
+      font-size: 0.875rem;
+      color: var(--color-grey);
+      font-style: italic;
+    }
 
-        .confirmation-screen {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--color-grey-border);
-            border-radius: var(--border-radius);
-            padding: var(--space-2xl);
-            text-align: center;
-            display: none;
-        }
+    .status-strip {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--color-grey-border);
+      border-radius: var(--border-radius);
+      padding: var(--space-lg);
+      text-align: center;
+      max-width: 900px;
+      margin: 0 auto;
+    }
 
-        .confirmation-screen.visible {
-            display: block;
-        }
+    .status-strip-headline {
+      font-size: 1.25rem;
+      color: var(--color-white);
+      margin-bottom: var(--space-sm);
+    }
 
-        .confirmation-icon {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto var(--space-lg);
-            background: rgba(45, 184, 249, 0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+    .status-strip-flow {
+      font-size: 1rem;
+      color: var(--color-grey-light);
+      margin-bottom: var(--space-sm);
+    }
 
-        .confirmation-title {
-            font-size: 2rem;
-            color: var(--color-white);
-            margin-bottom: var(--space-md);
-        }
+    .status-strip-note {
+      font-size: 0.875rem;
+      color: var(--color-grey);
+      font-style: italic;
+      margin-bottom: 0;
+    }
 
-        .confirmation-text {
-            color: var(--color-grey);
-            margin-bottom: var(--space-xl);
-            line-height: 1.7;
-        }
-
-        @media (max-width: 767px) {
-            .form-row {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    @media (max-width: 768px) {
+      .assessment-cards {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-    <nav class="nav-container" id="mainNav">
-        <div class="nav-wrapper">
-            <a href="../" class="nav-brand">
-                <img src="../logo_tsi_bbg01.png" alt="TechSafe Industries" class="brand-logo">
-            </a>
-            <ul class="nav-menu">
-                <li><a href="../#industries" class="nav-link">Industries</a></li>
-                <li><a href="../diagnostic/" class="nav-link">Diagnostic</a></li>
-                <li><a href="../#governance" class="nav-link">Governance</a></li>
-            </ul>
+  <nav class="nav-container" id="mainNav">
+    <div class="nav-wrapper">
+      <a href="../" class="nav-brand">
+        <img src="../logo_tsi_bbg01.png" alt="TechSafe Industries" class="brand-logo">
+      </a>
+      <ul class="nav-menu">
+        <li><a href="../#industries" class="nav-link">Industries</a></li>
+        <li><a href="../diagnostic/signals.html" class="nav-link">Diagnostic</a></li>
+        <li><a href="./" class="nav-link">Assessment</a></li>
+        <li><a href="../governance/" class="nav-link">Governance</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="assessment-hero">
+    <h1 class="assessment-title">Assessment (Pre-Decision)</h1>
+    <p class="assessment-subtitle">
+      Capture structured inputs for governance review. No scoring. No automated outcomes.
+    </p>
+
+    <div class="hero-cta-group">
+      <a href="../governance/" class="btn-primary">Proceed to Governance</a>
+      <a href="../diagnostic/signals.html" class="btn-secondary">Back to Diagnostic Signals</a>
+    </div>
+  </div>
+
+  <div class="assessment-container">
+
+    <!-- Authority Banner -->
+    <div class="authority-banner">
+      <h2 class="authority-banner-title">Assessment is not a decision layer</h2>
+      <p class="authority-banner-body">
+        This page captures structured responses only. All evaluation, thresholds, approvals, and evidence authority are
+        governed in TechSafeAI under human oversight.
+      </p>
+    </div>
+
+    <!-- Assessment Cards -->
+    <div class="assessment-cards">
+
+      <!-- Card 1: Site Context -->
+      <div class="assessment-card">
+        <h3 class="assessment-card-title">Site Context</h3>
+        <div class="question-group">
+          <div class="question-item">
+            <label class="question-label">Site / Facility name</label>
+            <input type="text" class="question-input" placeholder="(placeholder)" disabled>
+          </div>
+          <div class="question-item">
+            <label class="question-label">Operation type</label>
+            <input type="text" class="question-input" placeholder="(placeholder)" disabled>
+          </div>
+          <div class="question-item">
+            <label class="question-label">Shift / crew</label>
+            <input type="text" class="question-input" placeholder="(placeholder)" disabled>
+          </div>
+          <div class="question-item">
+            <label class="question-label">Contractors involved?</label>
+            <input type="text" class="question-input" placeholder="(placeholder)" disabled>
+          </div>
         </div>
-    </nav>
+        <div class="card-footer">Status: Awaiting Governance Review</div>
+      </div>
 
-    <div class="assessment-container">
-
-        <!-- Form Header -->
-        <div style="text-align: center; margin-bottom: 3rem;">
-            <h1 class="hero-title" style="font-size: 2.5rem; margin-bottom: 1rem;">HSE Business Assessment</h1>
-            <p style="color: var(--color-grey); max-width: 700px; margin: 0 auto;">
-                Complete this assessment to receive a tailored governance review from a TechSafe consultant. All fields
-                marked with <span class="required">*</span> are required.
-            </p>
+      <!-- Card 2: Hazard & Work Context -->
+      <div class="assessment-card">
+        <h3 class="assessment-card-title">Hazard & Work Context</h3>
+        <div class="question-group">
+          <div class="question-item">
+            <label class="question-label">Work type</label>
+            <input type="text" class="question-input" placeholder="(placeholder)" disabled>
+          </div>
+          <div class="question-item">
+            <label class="question-label">Primary hazard category</label>
+            <input type="text" class="question-input" placeholder="(placeholder)" disabled>
+          </div>
+          <div class="question-item">
+            <label class="question-label">SIMOPS present?</label>
+            <input type="text" class="question-input" placeholder="(placeholder)" disabled>
+          </div>
+          <div class="question-item">
+            <label class="question-label">Isolation / PTW required?</label>
+            <input type="text" class="question-input" placeholder="(placeholder)" disabled>
+          </div>
         </div>
+        <div class="card-footer">Status: Awaiting Governance Review</div>
+      </div>
 
-        <!-- Assessment Form -->
-        <form id="assessmentForm">
-
-            <!-- Section 1: Organisation Details -->
-            <div class="form-section">
-                <h2 class="form-section-title">Organisation Details</h2>
-
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="orgName">Organisation Name <span class="required">*</span></label>
-                        <input type="text" id="orgName" name="orgName" required>
-                        <span class="error-message">Please enter your organisation name</span>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="industry">Primary Industry <span class="required">*</span></label>
-                        <select id="industry" name="industry" required>
-                            <option value="">Select industry</option>
-                            <option value="mining">Mining</option>
-                            <option value="construction">Construction</option>
-                            <option value="energy-renewables">Energy &amp; Renewables</option>
-                            <option value="manufacturing">Manufacturing</option>
-                            <option value="transport-logistics">Transport &amp; Logistics</option>
-                            <option value="aviation">Aviation</option>
-                            <option value="oil-gas">Oil &amp; Gas</option>
-                            <option value="other">Other</option>
-                        </select>
-                        <span class="error-message">Please select your industry</span>
-                    </div>
-                </div>
-
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="workforceSize">Workforce Size <span class="required">*</span></label>
-                        <select id="workforceSize" name="workforceSize" required>
-                            <option value="">Select range</option>
-                            <option value="1-50">1–50 employees</option>
-                            <option value="51-200">51–200 employees</option>
-                            <option value="201-500">201–500 employees</option>
-                            <option value="501-1000">501–1,000 employees</option>
-                            <option value="1000+">1,000+ employees</option>
-                        </select>
-                        <span class="error-message">Please select workforce size</span>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="siteCount">Number of Sites <span class="required">*</span></label>
-                        <select id="siteCount" name="siteCount" required>
-                            <option value="">Select range</option>
-                            <option value="1">Single site</option>
-                            <option value="2-5">2–5 sites</option>
-                            <option value="6-20">6–20 sites</option>
-                            <option value="20+">20+ sites</option>
-                        </select>
-                        <span class="error-message">Please select number of sites</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Section 2: Contact Information -->
-            <div class="form-section">
-                <h2 class="form-section-title">Contact Information</h2>
-
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="contactName">Full Name <span class="required">*</span></label>
-                        <input type="text" id="contactName" name="contactName" required>
-                        <span class="error-message">Please enter your name</span>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="jobTitle">Job Title <span class="required">*</span></label>
-                        <input type="text" id="jobTitle" name="jobTitle" required>
-                        <span class="error-message">Please enter your job title</span>
-                    </div>
-                </div>
-
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="email">Work Email <span class="required">*</span></label>
-                        <input type="email" id="email" name="email" required>
-                        <span class="error-message">Please enter a valid email address</span>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="phone">Phone Number <span class="required">*</span></label>
-                        <input type="tel" id="phone" name="phone" required>
-                        <span class="error-message">Please enter a valid phone number</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Section 3: Current State -->
-            <div class="form-section">
-                <h2 class="form-section-title">Current Governance State</h2>
-
-                <div class="form-group">
-                    <label for="currentSystems">What systems do you currently use for HSE management? <span
-                            class="required">*</span></label>
-                    <textarea id="currentSystems" name="currentSystems" required></textarea>
-                    <span class="field-hint">e.g., spreadsheets, paper-based, third-party software</span>
-                    <span class="error-message">Please describe your current systems</span>
-                </div>
-
-                <div class="form-group">
-                    <label>Which areas require immediate attention? <span class="required">*</span></label>
-                    <div class="checkbox-group">
-                        <div class="checkbox-item">
-                            <input type="checkbox" id="area1" name="areas" value="incident-management">
-                            <label for="area1">Incident management</label>
-                        </div>
-                        <div class="checkbox-item">
-                            <input type="checkbox" id="area2" name="areas" value="contractor-oversight">
-                            <label for="area2">Contractor oversight</label>
-                        </div>
-                        <div class="checkbox-item">
-                            <input type="checkbox" id="area3" name="areas" value="compliance-tracking">
-                            <label for="area3">Compliance tracking</label>
-                        </div>
-                        <div class="checkbox-item">
-                            <input type="checkbox" id="area4" name="areas" value="audit-readiness">
-                            <label for="area4">Audit readiness</label>
-                        </div>
-                        <div class="checkbox-item">
-                            <input type="checkbox" id="area5" name="areas" value="board-reporting">
-                            <label for="area5">Board reporting</label>
-                        </div>
-                    </div>
-                    <span class="error-message">Please select at least one area</span>
-                </div>
-
-                <div class="form-group">
-                    <label for="challenges">What are your biggest governance challenges? <span
-                            class="required">*</span></label>
-                    <textarea id="challenges" name="challenges" required></textarea>
-                    <span class="error-message">Please describe your challenges</span>
-                </div>
-            </div>
-
-            <!-- Section 4: Engagement Goals -->
-            <div class="form-section">
-                <h2 class="form-section-title">Engagement Goals</h2>
-
-                <div class="form-group">
-                    <label for="timeline">Desired engagement timeline <span class="required">*</span></label>
-                    <select id="timeline" name="timeline" required>
-                        <option value="">Select timeline</option>
-                        <option value="immediate">Immediate (within 2 weeks)</option>
-                        <option value="1-month">Within 1 month</option>
-                        <option value="1-3-months">1–3 months</option>
-                        <option value="3-6-months">3–6 months</option>
-                        <option value="exploratory">Exploratory only</option>
-                    </select>
-                    <span class="error-message">Please select a timeline</span>
-                </div>
-
-                <div class="form-group">
-                    <label for="budget">Indicative budget range (optional)</label>
-                    <select id="budget" name="budget">
-                        <option value="">Prefer not to say</option>
-                        <option value="under-50k">Under $50,000</option>
-                        <option value="50k-150k">$50,000–$150,000</option>
-                        <option value="150k-300k">$150,000–$300,000</option>
-                        <option value="300k+">$300,000+</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="additionalInfo">Additional information</label>
-                    <textarea id="additionalInfo" name="additionalInfo"></textarea>
-                </div>
-            </div>
-
-            <!-- Submit Button -->
-            <div style="text-align: center; margin-top: 2rem;">
-                <button type="submit" class="btn-primary" style="padding: 1.25rem 3rem; font-size: 1.1rem;">
-                    Submit Assessment
-                </button>
-            </div>
-
-        </form>
-
-        <!-- Confirmation Screen (Hidden) -->
-        <div class="confirmation-screen">
-            <div class="confirmation-icon">
-                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-            </div>
-            <h2 class="confirmation-title">Assessment Submitted</h2>
-            <p class="confirmation-text">
-                Thank you for completing the HSE Business Assessment. A TechSafe consultant will review your submission
-                and contact you within two business days to discuss your governance requirements.
-            </p>
-            <div class="hero-cta-group">
-                <a href="../" class="btn-primary">Return to Homepage</a>
-                <a href="../diagnostic/" class="btn-secondary">Try Diagnostic Tool</a>
-            </div>
+      <!-- Card 3: Controls & Verification (Non-scored) -->
+      <div class="assessment-card">
+        <h3 class="assessment-card-title">Controls & Verification (Non-scored)</h3>
+        <div class="question-group">
+          <div class="question-item">
+            <label class="question-label">Controls identified</label>
+            <input type="text" class="question-input" placeholder="(placeholder)" disabled>
+          </div>
+          <div class="question-item">
+            <label class="question-label">Control verification evidence available?</label>
+            <input type="text" class="question-input" placeholder="(placeholder)" disabled>
+          </div>
+          <div class="question-item">
+            <label class="question-label">Barriers impacted?</label>
+            <input type="text" class="question-input" placeholder="(placeholder)" disabled>
+          </div>
         </div>
+        <div class="card-footer">Status: Awaiting Governance Review</div>
+      </div>
+
+      <!-- Card 4: Incident / Trigger (If Applicable) -->
+      <div class="assessment-card">
+        <h3 class="assessment-card-title">Incident / Trigger (If Applicable)</h3>
+        <div class="question-group">
+          <div class="question-item">
+            <label class="question-label">Related incident ID</label>
+            <input type="text" class="question-input" placeholder="(placeholder)" disabled>
+          </div>
+          <div class="question-item">
+            <label class="question-label">Trigger type (manual / inspection / device signal)</label>
+            <input type="text" class="question-input" placeholder="(placeholder)" disabled>
+          </div>
+          <div class="question-item">
+            <label class="question-label">Timestamp received</label>
+            <input type="text" class="question-input" placeholder="(placeholder)" disabled>
+          </div>
+        </div>
+        <div class="card-footer">Status: Awaiting Governance Review</div>
+      </div>
 
     </div>
 
-    <footer class="footer">
-        <div class="footer-content">
-            <p class="footer-tagline">Intelligence &amp; Governance Partner for High-Risk Industries</p>
-            <p class="footer-legal">
-                TechSafe Industries provides advisory, systems, and assurance services. We do not provide legal advice
-                or guarantee regulatory compliance outcomes.
-            </p>
-            <p class="footer-copyright">© 2026 TechSafe Industries. All rights reserved.</p>
-        </div>
-    </footer>
+    <!-- Status Strip -->
+    <div class="status-strip">
+      <h3 class="status-strip-headline">System Flow (Locked)</h3>
+      <p class="status-strip-flow">Inputs → Assessment → Governance → Visibility. No automation without oversight.</p>
+      <p class="status-strip-note">Assessment never issues approvals, rejections, or compliance claims.</p>
+    </div>
 
-    <script>
-        window.addEventListener('scroll', function () {
-            const nav = document.getElementById('mainNav');
-            if (window.scrollY > 50) {
-                nav.classList.add('compact');
-            } else {
-                nav.classList.remove('compact');
-            }
-        });
+  </div>
 
-        const form = document.getElementById('assessmentForm');
-        const confirmationScreen = document.querySelector('.confirmation-screen');
+  <footer class="footer">
+    <div class="footer-content">
+      <p class="footer-tagline">Intelligence & Governance Partner for High-Risk Industries</p>
+      <p class="footer-legal">
+        TechSafe Industries provides advisory, systems, and assurance services. We do not provide legal advice or
+        guarantee regulatory compliance outcomes.
+      </p>
+      <p class="footer-copyright">© 2026 TechSafe Industries. All rights reserved.</p>
+    </div>
+  </footer>
 
-        form.addEventListener('submit', function (e) {
-            e.preventDefault();
-
-            let isValid = true;
-
-            // Validate required fields
-            const requiredFields = form.querySelectorAll('[required]');
-            requiredFields.forEach(field => {
-                const errorMsg = field.parentElement.querySelector('.error-message');
-
-                if (!field.value.trim()) {
-                    field.classList.add('error');
-                    if (errorMsg) errorMsg.classList.add('visible');
-                    isValid = false;
-                } else {
-                    field.classList.remove('error');
-                    if (errorMsg) errorMsg.classList.remove('visible');
-                }
-            });
-
-            // Validate email format
-            const emailField = document.getElementById('email');
-            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (emailField.value && !emailPattern.test(emailField.value)) {
-                emailField.classList.add('error');
-                const errorMsg = emailField.parentElement.querySelector('.error-message');
-                if (errorMsg) {
-                    errorMsg.textContent = 'Please enter a valid email address';
-                    errorMsg.classList.add('visible');
-                }
-                isValid = false;
-            }
-
-            // Validate checkbox group
-            const checkboxes = form.querySelectorAll('input[name="areas"]');
-            const checkedBoxes = Array.from(checkboxes).filter(cb => cb.checked);
-            const checkboxError = form.querySelector('.checkbox-group').parentElement.querySelector('.error-message');
-
-            if (checkedBoxes.length === 0) {
-                if (checkboxError) checkboxError.classList.add('visible');
-                isValid = false;
-            } else {
-                if (checkboxError) checkboxError.classList.remove('visible');
-            }
-
-            if (isValid) {
-                form.style.display = 'none';
-                confirmationScreen.classList.add('visible');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            } else {
-                const firstError = form.querySelector('.error');
-                if (firstError) {
-                    firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                }
-            }
-        });
-
-        // Clear error on input
-        form.querySelectorAll('input, select, textarea').forEach(field => {
-            field.addEventListener('input', function () {
-                this.classList.remove('error');
-                const errorMsg = this.parentElement.querySelector('.error-message');
-                if (errorMsg) errorMsg.classList.remove('visible');
-            });
-        });
-    </script>
+  <script>
+    window.addEventListener('scroll', function () {
+      const nav = document.getElementById('mainNav');
+      if (window.scrollY > 50) {
+        nav.classList.add('compact');
+      } else {
+        nav.classList.remove('compact');
+      }
+    });
+  </script>
 
 </body>
 
