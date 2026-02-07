@@ -1,0 +1,419 @@
+/* ===================================
+   TSI UI CONSISTENCY AUDIT FIXES
+   Cross-page standardization
+   =================================== */
+
+/* TYPOGRAPHY CONSISTENCY */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-display);
+    color: var(--color-white);
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+h1 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+}
+
+h2 {
+    font-size: 2.5rem;
+}
+
+h3 {
+    font-size: 1.75rem;
+}
+
+p,
+li,
+label,
+input,
+select,
+textarea,
+button {
+    font-family: var(--font-primary);
+    line-height: 1.7;
+}
+
+/* COLOUR CONTRAST ENFORCEMENT */
+body {
+    background-color: var(--color-navy);
+    color: var(--color-grey-light);
+}
+
+.section-description,
+.industry-description,
+.framework-card-description,
+.engage-card-intro,
+.report-description {
+    color: var(--color-grey);
+    /* Ensures 4.5:1 contrast ratio minimum */
+}
+
+.nav-link {
+    color: var(--color-grey-light);
+}
+
+.nav-link:hover {
+    color: var(--color-white);
+}
+
+/* CTA CONSISTENCY */
+.btn-primary,
+.btn-secondary {
+    display: inline-block;
+    padding: 1rem 2rem;
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: var(--transition);
+    cursor: pointer;
+    border: none;
+    font-family: var(--font-primary);
+    text-align: center;
+    text-decoration: none;
+}
+
+.btn-primary {
+    background-color: var(--color-blue);
+    color: var(--color-white);
+    border: 2px solid var(--color-blue);
+}
+
+.btn-primary:hover {
+    background-color: var(--color-blue-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(45, 184, 249, 0.2);
+    color: var(--color-white);
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--color-white);
+    border: 2px solid var(--color-grey-border);
+}
+
+.btn-secondary:hover {
+    border-color: var(--color-blue);
+    color: var(--color-blue);
+    background-color: transparent;
+}
+
+/* Ensure full-width CTAs are consistent */
+.btn-primary[style*="width: 100%"],
+.btn-secondary[style*="width: 100%"] {
+    width: 100%;
+}
+
+/* ANCHOR + NAV VALIDATION */
+nav a,
+footer a,
+.nav-link,
+.industry-card a {
+    transition: var(--transition);
+    text-decoration: none;
+}
+
+nav a:focus,
+footer a:focus,
+button:focus,
+input:focus,
+select:focus,
+textarea:focus {
+    outline: 2px solid var(--color-blue);
+    outline-offset: 2px;
+}
+
+/* Ensure smooth scroll anchors work */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+}
+
+/* MOBILE BREAKPOINT STANDARDIZATION */
+@media (max-width: 767px) {
+
+    /* Typography scaling */
+    h1 {
+        font-size: 2.25rem;
+    }
+
+    h2 {
+        font-size: 1.75rem;
+    }
+
+    h3 {
+        font-size: 1.25rem;
+    }
+
+    .hero-title {
+        font-size: 2.25rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1.125rem;
+    }
+
+    /* Section padding consistency */
+    section {
+        padding: var(--space-2xl) 1.5rem;
+    }
+
+    /* Grid consistency */
+    .industries-grid,
+    .framework-grid,
+    .engage-grid,
+    .reports-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    /* CTA groups */
+    .hero-cta-group {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+        width: 100%;
+        text-align: center;
+    }
+
+    /* Navigation */
+    .nav-menu {
+        gap: 1rem;
+    }
+
+    .nav-link {
+        font-size: 0.85rem;
+        padding: 8px 10px;
+    }
+
+    /* Modal/Panel responsiveness */
+    .modal-container,
+    .sai-panel {
+        max-width: calc(100vw - 32px);
+        margin: 0 16px;
+    }
+
+    /* Form consistency */
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        font-size: 16px;
+        /* Prevents zoom on iOS */
+    }
+}
+
+/* Tablet breakpoint */
+@media (max-width: 1023px) {
+    .hero-title {
+        font-size: 3rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .framework-grid,
+    .engage-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ACCESSIBILITY FIXES */
+*:focus {
+    outline: 2px solid var(--color-blue);
+    outline-offset: 2px;
+}
+
+button:focus,
+a:focus {
+    outline: 2px solid var(--color-blue);
+    outline-offset: 2px;
+}
+
+/* Screen reader only class */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    html {
+        scroll-behavior: auto;
+    }
+}
+
+/* FOOTER CONSISTENCY */
+.footer {
+    background-color: var(--color-navy-deep);
+    border-top: 1px solid var(--color-grey-border);
+    padding: var(--space-2xl) 2rem var(--space-lg);
+}
+
+.footer-tagline {
+    font-size: 1.125rem;
+    color: var(--color-grey-light);
+    margin-bottom: var(--space-md);
+    font-weight: 500;
+}
+
+.footer-legal {
+    color: var(--color-grey);
+    font-size: 0.9rem;
+    margin-bottom: var(--space-md);
+    line-height: 1.6;
+}
+
+.footer-copyright {
+    color: var(--color-grey);
+    font-size: 0.85rem;
+    margin-bottom: 0;
+}
+
+/* SECTION HEADER CONSISTENCY */
+.section-header {
+    text-align: center;
+    margin-bottom: var(--space-2xl);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    margin-bottom: var(--space-md);
+    color: var(--color-white);
+}
+
+.section-description {
+    font-size: 1.125rem;
+    color: var(--color-grey);
+    line-height: 1.7;
+    margin-bottom: 0;
+}
+
+/* CARD CONSISTENCY */
+.industry-card,
+.framework-card,
+.engage-card,
+.platform-card,
+.report-card {
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.industry-card:hover,
+.framework-card:hover,
+.engage-card:hover,
+.platform-card:hover,
+.report-card:hover {
+    transform: translateY(-4px);
+}
+
+/* LINK COLOR CONSISTENCY */
+a {
+    color: var(--color-blue);
+}
+
+a:hover {
+    color: var(--color-blue-hover);
+}
+
+/* Ensure industry card links inherit correct color */
+.industry-card a {
+    color: inherit;
+}
+
+.industry-card:hover a {
+    color: inherit;
+}
+
+/* NAV STICKY CONSISTENCY */
+.nav-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+.nav-container.compact {
+    padding: 10px 0;
+}
+
+/* HERO SECTION CONSISTENCY */
+.hero-section {
+    padding: 64px 0 56px;
+    min-height: calc(100vh - 64px);
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.hero-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 24px;
+    padding-top: 60px;
+}
+
+/* SPACING CONSISTENCY */
+.section-container {
+    max-width: var(--container-max);
+    margin: 0 auto;
+}
+
+/* Z-INDEX HIERARCHY */
+.nav-container {
+    z-index: 1000;
+}
+
+.sai-container {
+    z-index: 9000;
+}
+
+.modal-overlay {
+    z-index: 9999;
+}
+
+/* BUTTON DISABLED STATE */
+button:disabled,
+.btn-primary:disabled,
+.btn-secondary:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+button:disabled:hover,
+.btn-primary:disabled:hover,
+.btn-secondary:disabled:hover {
+    transform: none;
+    box-shadow: none;
+}

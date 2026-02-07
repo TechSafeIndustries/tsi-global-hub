@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SAI Assistant Component Demo">
+    <title>SAI Component | TechSafe Industries</title>
+    <link rel="icon" type="image/png" href="../logo_tsi_bbg01.png">
+    <link rel="stylesheet" href="../styles-business.css">
+    <style>
+        /* SAI Floating Container */
+        .sai-container {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 9000;
+        }
+
+        .sai-avatar {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: var(--color-blue);
+            box-shadow: 0 4px 16px rgba(45, 184, 249, 0.4);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .sai-avatar:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 24px rgba(45, 184, 249, 0.6);
+        }
+
+        .sai-avatar-icon {
+            width: 36px;
+            height: 36px;
+            color: var(--color-white);
+        }
+
+        .sai-pulse-ring {
+            position: absolute;
+            top: -4px;
+            left: -4px;
+            right: -4px;
+            bottom: -4px;
+            border: 2px solid var(--color-blue);
+            border-radius: 50%;
+            animation: pulse-ring 2s infinite;
+            opacity: 0;
+        }
+
+        @keyframes pulse-ring {
+            0% {
+                transform: scale(1);
+                opacity: 0.5;
+            }
+
+            100% {
+                transform: scale(1.2);
+                opacity: 0;
+            }
+        }
+
+        .sai-badge {
+            position: absolute;
+            top: -4px;
+            right: -4px;
+            background: #EF4444;
+            color: white;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            font-size: 0.7rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid var(--color-navy);
+        }
+
+        .sai-panel {
+            position: absolute;
+            bottom: 80px;
+            right: 0;
+            width: 360px;
+            max-height: 500px;
+            background: var(--color-navy);
+            border: 1px solid var(--color-grey-border);
+            border-radius: 12px;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+            transform: scale(0.8) translateY(20px);
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-origin: bottom right;
+        }
+
+        .sai-panel.active {
+            transform: scale(1) translateY(0);
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .sai-panel-header {
+            padding: var(--space-lg);
+            border-bottom: 1px solid var(--color-grey-border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .sai-panel-title {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .sai-panel-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--color-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .sai-panel-info h3 {
+            font-size: 1rem;
+            color: var(--color-white);
+            margin: 0 0 0.25rem 0;
+        }
+
+        .sai-panel-info p {
+            font-size: 0.75rem;
+            color: var(--color-grey);
+            margin: 0;
+        }
+
+        .sai-close {
+            background: transparent;
+            border: none;
+            color: var(--color-grey);
+            cursor: pointer;
+            padding: 0.25rem;
+            display: flex;
+            transition: var(--transition);
+        }
+
+        .sai-close:hover {
+            color: var(--color-white);
+        }
+
+        .sai-panel-body {
+            padding: var(--space-lg);
+            max-height: 360px;
+            overflow-y: auto;
+        }
+
+        .sai-message-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .sai-message {
+            display: flex;
+            gap: 0.75rem;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .sai-message-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: rgba(45, 184, 249, 0.2);
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-blue);
+        }
+
+        .sai-message-content {
+            flex: 1;
+        }
+
+        .sai-message-bubble {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 0.75rem 1rem;
+            color: var(--color-grey-light);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .sai-message-time {
+            font-size: 0.7rem;
+            color: var(--color-grey);
+            margin-top: 0.25rem;
+            padding-left: 1rem;
+        }
+
+        .sai-quick-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .sai-quick-action {
+            background: rgba(45, 184, 249, 0.1);
+            border: 1px solid rgba(45, 184, 249, 0.3);
+            border-radius: 6px;
+            padding: 0.75rem;
+            color: var(--color-blue);
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: left;
+            text-decoration: none;
+            display: block;
+        }
+
+        .sai-quick-action:hover {
+            background: rgba(45, 184, 249, 0.2);
+            border-color: var(--color-blue);
+        }
+
+        .sai-panel-footer {
+            padding: var(--space-md) var(--space-lg);
+            border-top: 1px solid var(--color-grey-border);
+            text-align: center;
+        }
+
+        .sai-footer-text {
+            font-size: 0.75rem;
+            color: var(--color-grey);
+            font-style: italic;
+        }
+
+        @media (max-width: 767px) {
+            .sai-panel {
+                width: calc(100vw - 48px);
+                right: -12px;
+            }
+
+            .sai-container {
+                bottom: 16px;
+                right: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="nav-container" id="mainNav">
+        <div class="nav-wrapper">
+            <a href="../" class="nav-brand">
+                <img src="../logo_tsi_bbg01.png" alt="TechSafe Industries" class="brand-logo">
+            </a>
+            <ul class="nav-menu">
+                <li><a href="../#industries" class="nav-link">Industries</a></li>
+                <li><a href="../assessment/" class="nav-link">Assessment</a></li>
+                <li><a href="../governance/" class="nav-link">Governance</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero-section">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title" style="font-size: 2.5rem;">SAI Assistant Component</h1>
+                <p class="hero-subtitle">
+                    Click the floating SAI avatar in the bottom-right corner to view the panel
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="industries-section">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">Demo Content</h2>
+                <p class="section-description">
+                    Scroll down to see the SAI component stay fixed in position
+                </p>
+            </div>
+            <div
+                style="height: 600px; background: rgba(255,255,255,0.02); border-radius: 8px; display: flex; align-items: center; justify-content: center;">
+                <p style="color: var(--color-grey);">Placeholder content area</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SAI Floating Container -->
+    <div class="sai-container">
+
+        <!-- Avatar Button -->
+        <div class="sai-avatar" id="saiAvatar">
+            <div class="sai-pulse-ring"></div>
+            <svg class="sai-avatar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M12 16v-4"></path>
+                <path d="M12 8h.01"></path>
+            </svg>
+            <div class="sai-badge">3</div>
+        </div>
+
+        <!-- Expandable Panel -->
+        <div class="sai-panel" id="saiPanel">
+
+            <!-- Header -->
+            <div class="sai-panel-header">
+                <div class="sai-panel-title">
+                    <div class="sai-panel-avatar">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <path d="M12 16v-4"></path>
+                            <path d="M12 8h.01"></path>
+                        </svg>
+                    </div>
+                    <div class="sai-panel-info">
+                        <h3>[SAI_NAME]</h3>
+                        <p>[SAI_STATUS_TEXT]</p>
+                    </div>
+                </div>
+                <button class="sai-close" id="saiClose" aria-label="Close SAI panel">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Body -->
+            <div class="sai-panel-body">
+                <div class="sai-message-list">
+
+                    <!-- Message 1 -->
+                    <div class="sai-message">
+                        <div class="sai-message-avatar">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                            </svg>
+                        </div>
+                        <div class="sai-message-content">
+                            <div class="sai-message-bubble">
+                                [SAI_MESSAGE_1]
+                            </div>
+                            <div class="sai-message-time">[TIMESTAMP_1]</div>
+                        </div>
+                    </div>
+
+                    <!-- Message 2 -->
+                    <div class="sai-message">
+                        <div class="sai-message-avatar">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                            </svg>
+                        </div>
+                        <div class="sai-message-content">
+                            <div class="sai-message-bubble">
+                                [SAI_MESSAGE_2]
+                            </div>
+                            <div class="sai-message-time">[TIMESTAMP_2]</div>
+                        </div>
+                    </div>
+
+                    <!-- Message 3 -->
+                    <div class="sai-message">
+                        <div class="sai-message-avatar">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                            </svg>
+                        </div>
+                        <div class="sai-message-content">
+                            <div class="sai-message-bubble">
+                                [SAI_MESSAGE_3]
+                            </div>
+                            <div class="sai-message-time">[TIMESTAMP_3]</div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Actions -->
+                    <div class="sai-quick-actions">
+                        <a href="../assessment/" class="sai-quick-action">[QUICK_ACTION_1]</a>
+                        <a href="../diagnostic/" class="sai-quick-action">[QUICK_ACTION_2]</a>
+                        <a href="../governance/" class="sai-quick-action">[QUICK_ACTION_3]</a>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="sai-panel-footer">
+                <p class="sai-footer-text">[SAI_FOOTER_DISCLAIMER]</p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="footer-tagline">Intelligence &amp; Governance Partner for High-Risk Industries</p>
+            <p class="footer-legal">
+                TechSafe Industries provides advisory, systems, and assurance services. We do not provide legal advice
+                or guarantee regulatory compliance outcomes.
+            </p>
+            <p class="footer-copyright">© 2026 TechSafe Industries. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        window.addEventListener('scroll', function () {
+            const nav = document.getElementById('mainNav');
+            if (window.scrollY > 50) {
+                nav.classList.add('compact');
+            } else {
+                nav.classList.remove('compact');
+            }
+        });
+
+        const saiAvatar = document.getElementById('saiAvatar');
+        const saiPanel = document.getElementById('saiPanel');
+        const saiClose = document.getElementById('saiClose');
+
+        function toggleSAIPanel() {
+            saiPanel.classList.toggle('active');
+        }
+
+        function closeSAIPanel() {
+            saiPanel.classList.remove('active');
+        }
+
+        saiAvatar.addEventListener('click', toggleSAIPanel);
+        saiClose.addEventListener('click', closeSAIPanel);
+
+        document.addEventListener('click', function (e) {
+            const container = document.querySelector('.sai-container');
+            if (!container.contains(e.target) && saiPanel.classList.contains('active')) {
+                closeSAIPanel();
+            }
+        });
+
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && saiPanel.classList.contains('active')) {
+                closeSAIPanel();
+            }
+        });
+    </script>
+
+</body>
+
+</html>

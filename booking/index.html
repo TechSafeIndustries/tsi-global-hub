@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Book a consultation with TechSafe Industries">
+    <title>Book Consultation | TechSafe Industries</title>
+    <link rel="icon" type="image/png" href="../logo_tsi_bbg01.png">
+    <link rel="stylesheet" href="../styles-business.css">
+    <style>
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(5, 19, 42, 0.95);
+            backdrop-filter: blur(8px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-container {
+            background: var(--color-navy);
+            border: 1px solid var(--color-grey-border);
+            border-radius: var(--border-radius);
+            max-width: 600px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-header {
+            padding: var(--space-xl) var(--space-xl) var(--space-md);
+            border-bottom: 1px solid var(--color-grey-border);
+            position: relative;
+        }
+
+        .modal-title {
+            font-size: 1.75rem;
+            color: var(--color-white);
+            margin: 0;
+        }
+
+        .modal-subtitle {
+            color: var(--color-grey);
+            margin-top: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: var(--space-lg);
+            right: var(--space-lg);
+            background: transparent;
+            border: none;
+            color: var(--color-grey);
+            cursor: pointer;
+            padding: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .modal-close:hover {
+            color: var(--color-white);
+        }
+
+        .modal-body {
+            padding: var(--space-xl);
+        }
+
+        .form-group {
+            margin-bottom: var(--space-lg);
+        }
+
+        .form-group label {
+            display: block;
+            color: var(--color-grey-light);
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--color-grey-border);
+            border-radius: 4px;
+            padding: 0.875rem 1rem;
+            color: var(--color-white);
+            font-family: var(--font-primary);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--color-blue);
+            background-color: rgba(255, 255, 255, 0.08);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .required {
+            color: #EF4444;
+        }
+
+        .modal-footer {
+            padding: var(--space-md) var(--space-xl) var(--space-xl);
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-end;
+        }
+
+        .success-state {
+            display: none;
+            text-align: center;
+            padding: var(--space-2xl);
+        }
+
+        .success-state.active {
+            display: block;
+        }
+
+        .success-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto var(--space-lg);
+            background: rgba(45, 184, 249, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-blue);
+        }
+
+        .success-title {
+            font-size: 1.75rem;
+            color: var(--color-white);
+            margin-bottom: var(--space-md);
+        }
+
+        .success-message {
+            color: var(--color-grey);
+            line-height: 1.7;
+            margin-bottom: var(--space-xl);
+        }
+
+        @media (max-width: 767px) {
+            .modal-footer {
+                flex-direction: column;
+            }
+
+            .modal-footer button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="nav-container" id="mainNav">
+        <div class="nav-wrapper">
+            <a href="../" class="nav-brand">
+                <img src="../logo_tsi_bbg01.png" alt="TechSafe Industries" class="brand-logo">
+            </a>
+            <ul class="nav-menu">
+                <li><a href="../#industries" class="nav-link">Industries</a></li>
+                <li><a href="../assessment/" class="nav-link">Assessment</a></li>
+                <li><a href="../governance/" class="nav-link">Governance</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero-section">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title" style="font-size: 2.5rem;">Book a Consultation</h1>
+                <p class="hero-subtitle">
+                    Click the button below to open the booking modal
+                </p>
+                <div class="hero-cta-group">
+                    <button id="openModal" class="btn-primary">Open Booking Modal</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal Overlay -->
+    <div class="modal-overlay" id="bookingModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal-container">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h2 class="modal-title" id="modalTitle">[MODAL_TITLE]</h2>
+                <p class="modal-subtitle">[MODAL_SUBTITLE]</p>
+                <button class="modal-close" id="closeModal" aria-label="Close modal">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Form State -->
+            <div id="formState">
+                <form id="bookingForm">
+                    <div class="modal-body">
+
+                        <div class="form-group">
+                            <label for="fullName">Full Name <span class="required">*</span></label>
+                            <input type="text" id="fullName" name="fullName" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Work Email <span class="required">*</span></label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Phone Number <span class="required">*</span></label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="organisation">Organisation <span class="required">*</span></label>
+                            <input type="text" id="organisation" name="organisation" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="industry">Industry <span class="required">*</span></label>
+                            <select id="industry" name="industry" required>
+                                <option value="">Select industry</option>
+                                <option value="mining">Mining</option>
+                                <option value="construction">Construction</option>
+                                <option value="energy-renewables">Energy &amp; Renewables</option>
+                                <option value="manufacturing">Manufacturing</option>
+                                <option value="transport-logistics">Transport &amp; Logistics</option>
+                                <option value="aviation">Aviation</option>
+                                <option value="oil-gas">Oil &amp; Gas</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="consultationType">Consultation Type <span class="required">*</span></label>
+                            <select id="consultationType" name="consultationType" required>
+                                <option value="">Select type</option>
+                                <option value="initial">Initial consultation (30 min)</option>
+                                <option value="assessment">HSE assessment discussion (60 min)</option>
+                                <option value="governance">Governance review (60 min)</option>
+                                <option value="technical">Technical demo (45 min)</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="preferredTime">Preferred Time</label>
+                            <select id="preferredTime" name="preferredTime">
+                                <option value="">No preference</option>
+                                <option value="morning">Morning (9AM - 12PM)</option>
+                                <option value="afternoon">Afternoon (12PM - 3PM)</option>
+                                <option value="late-afternoon">Late afternoon (3PM - 5PM)</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Message (optional)</label>
+                            <textarea id="message" name="message"
+                                placeholder="Tell us about your requirements..."></textarea>
+                        </div>
+
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn-secondary" id="cancelButton">Cancel</button>
+                        <button type="submit" class="btn-primary">Submit Booking</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Success State (Hidden) -->
+            <div class="success-state" id="successState">
+                <div class="success-icon">
+                    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                </div>
+                <h3 class="success-title">[SUCCESS_TITLE]</h3>
+                <p class="success-message">[SUCCESS_MESSAGE]</p>
+                <button class="btn-primary" id="closeSuccess">Close</button>
+            </div>
+
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="footer-tagline">Intelligence &amp; Governance Partner for High-Risk Industries</p>
+            <p class="footer-legal">
+                TechSafe Industries provides advisory, systems, and assurance services. We do not provide legal advice
+                or guarantee regulatory compliance outcomes.
+            </p>
+            <p class="footer-copyright">© 2026 TechSafe Industries. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        window.addEventListener('scroll', function () {
+            const nav = document.getElementById('mainNav');
+            if (window.scrollY > 50) {
+                nav.classList.add('compact');
+            } else {
+                nav.classList.remove('compact');
+            }
+        });
+
+        const modal = document.getElementById('bookingModal');
+        const openModalBtn = document.getElementById('openModal');
+        const closeModalBtn = document.getElementById('closeModal');
+        const cancelBtn = document.getElementById('cancelButton');
+        const bookingForm = document.getElementById('bookingForm');
+        const formState = document.getElementById('formState');
+        const successState = document.getElementById('successState');
+        const closeSuccessBtn = document.getElementById('closeSuccess');
+
+        function openModal() {
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            closeModalBtn.focus();
+        }
+
+        function closeModal() {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+            formState.style.display = 'block';
+            successState.classList.remove('active');
+            bookingForm.reset();
+        }
+
+        openModalBtn.addEventListener('click', openModal);
+        closeModalBtn.addEventListener('click', closeModal);
+        cancelBtn.addEventListener('click', closeModal);
+        closeSuccessBtn.addEventListener('click', closeModal);
+
+        modal.addEventListener('click', function (e) {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && modal.classList.contains('active')) {
+                closeModal();
+            }
+        });
+
+        bookingForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            formState.style.display = 'none';
+            successState.classList.add('active');
+        });
+    </script>
+
+</body>
+
+</html>

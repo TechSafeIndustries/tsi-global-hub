@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="TechSafe Industries governance framework - Human-in-the-Loop controls for high-risk industries">
+    <title>Governance Framework | TechSafe Industries</title>
+    <link rel="icon" type="image/png" href="../logo_tsi_bbg01.png">
+    <link rel="stylesheet" href="../styles-business.css">
+    <style>
+        .comparison-table {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--color-grey-border);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            margin: var(--space-2xl) 0;
+        }
+
+        .comparison-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            border-bottom: 1px solid var(--color-grey-border);
+        }
+
+        .comparison-row:last-child {
+            border-bottom: none;
+        }
+
+        .comparison-row.header {
+            background: rgba(45, 184, 249, 0.1);
+        }
+
+        .comparison-cell {
+            padding: var(--space-lg);
+            color: var(--color-grey-light);
+            border-right: 1px solid var(--color-grey-border);
+        }
+
+        .comparison-cell:last-child {
+            border-right: none;
+        }
+
+        .comparison-row.header .comparison-cell {
+            color: var(--color-white);
+            font-weight: 600;
+            font-size: 1.05rem;
+        }
+
+        .emphasis-block {
+            background: rgba(45, 184, 249, 0.05);
+            border: 2px solid var(--color-blue);
+            border-radius: var(--border-radius);
+            padding: var(--space-2xl);
+            margin: var(--space-2xl) 0;
+        }
+
+        .emphasis-title {
+            font-size: 1.75rem;
+            color: var(--color-blue);
+            margin-bottom: var(--space-md);
+            text-align: center;
+        }
+
+        .emphasis-text {
+            color: var(--color-grey-light);
+            line-height: 1.7;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .disclaimer-block {
+            background: rgba(239, 68, 68, 0.05);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            border-radius: var(--border-radius);
+            padding: var(--space-xl);
+            margin: var(--space-2xl) 0;
+        }
+
+        .disclaimer-title {
+            font-size: 1.25rem;
+            color: #EF4444;
+            margin-bottom: var(--space-md);
+        }
+
+        .disclaimer-text {
+            color: var(--color-grey);
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 767px) {
+            .comparison-row {
+                grid-template-columns: 1fr;
+            }
+
+            .comparison-cell {
+                border-right: none;
+                border-bottom: 1px solid var(--color-grey-border);
+            }
+
+            .comparison-cell:last-child {
+                border-bottom: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="nav-container" id="mainNav">
+        <div class="nav-wrapper">
+            <a href="../" class="nav-brand">
+                <img src="../logo_tsi_bbg01.png" alt="TechSafe Industries" class="brand-logo">
+            </a>
+            <ul class="nav-menu">
+                <li><a href="#pillars" class="nav-link">Pillars</a></li>
+                <li><a href="#human-loop" class="nav-link">Human-in-the-Loop</a></li>
+                <li><a href="#controls" class="nav-link">Controls vs Automation</a></li>
+                <li><a href="#disclaimer" class="nav-link">Disclaimer</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero-section">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">Governance Framework</h1>
+                <p class="hero-subtitle">
+                    [GOVERNANCE_FRAMEWORK_DESCRIPTION]
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Governance Pillars -->
+    <section id="pillars" class="framework-section">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">Governance Pillars</h2>
+                <p class="section-description">[PILLARS_DESCRIPTION]</p>
+            </div>
+
+            <div class="framework-grid">
+                <div class="framework-card">
+                    <div class="framework-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                            <path d="M2 17l10 5 10-5"></path>
+                            <path d="M2 12l10 5 10-5"></path>
+                        </svg>
+                    </div>
+                    <h3 class="framework-card-title">[PILLAR_1_TITLE]</h3>
+                    <p class="framework-card-description">[PILLAR_1_DESCRIPTION]</p>
+                </div>
+
+                <div class="framework-card">
+                    <div class="framework-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <polyline points="16 18 22 12 16 6"></polyline>
+                            <polyline points="8 6 2 12 8 18"></polyline>
+                        </svg>
+                    </div>
+                    <h3 class="framework-card-title">[PILLAR_2_TITLE]</h3>
+                    <p class="framework-card-description">[PILLAR_2_DESCRIPTION]</p>
+                </div>
+
+                <div class="framework-card">
+                    <div class="framework-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                        </svg>
+                    </div>
+                    <h3 class="framework-card-title">[PILLAR_3_TITLE]</h3>
+                    <p class="framework-card-description">[PILLAR_3_DESCRIPTION]</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Human-in-the-Loop Emphasis -->
+    <section id="human-loop" class="industries-section">
+        <div class="section-container">
+            <div class="emphasis-block">
+                <h2 class="emphasis-title">Human-in-the-Loop</h2>
+                <p class="emphasis-text">
+                    [HUMAN_IN_LOOP_PRINCIPLE_TEXT]
+                </p>
+            </div>
+
+            <div class="engage-grid">
+                <div class="engage-card">
+                    <h3 class="engage-card-title">[HITL_ELEMENT_1_TITLE]</h3>
+                    <p class="engage-card-intro">[HITL_ELEMENT_1_DESCRIPTION]</p>
+                </div>
+
+                <div class="engage-card">
+                    <h3 class="engage-card-title">[HITL_ELEMENT_2_TITLE]</h3>
+                    <p class="engage-card-intro">[HITL_ELEMENT_2_DESCRIPTION]</p>
+                </div>
+
+                <div class="engage-card">
+                    <h3 class="engage-card-title">[HITL_ELEMENT_3_TITLE]</h3>
+                    <p class="engage-card-intro">[HITL_ELEMENT_3_DESCRIPTION]</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Controls vs Automation Comparison -->
+    <section id="controls" class="framework-section">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">Controls vs Automation</h2>
+                <p class="section-description">[CONTROLS_VS_AUTOMATION_INTRO]</p>
+            </div>
+
+            <div class="comparison-table">
+                <div class="comparison-row header">
+                    <div class="comparison-cell">Function</div>
+                    <div class="comparison-cell">TechSafe Controls</div>
+                    <div class="comparison-cell">Prohibited Automation</div>
+                </div>
+
+                <div class="comparison-row">
+                    <div class="comparison-cell"><strong>[FUNCTION_1]</strong></div>
+                    <div class="comparison-cell">[CONTROL_1]</div>
+                    <div class="comparison-cell">[PROHIBITED_1]</div>
+                </div>
+
+                <div class="comparison-row">
+                    <div class="comparison-cell"><strong>[FUNCTION_2]</strong></div>
+                    <div class="comparison-cell">[CONTROL_2]</div>
+                    <div class="comparison-cell">[PROHIBITED_2]</div>
+                </div>
+
+                <div class="comparison-row">
+                    <div class="comparison-cell"><strong>[FUNCTION_3]</strong></div>
+                    <div class="comparison-cell">[CONTROL_3]</div>
+                    <div class="comparison-cell">[PROHIBITED_3]</div>
+                </div>
+
+                <div class="comparison-row">
+                    <div class="comparison-cell"><strong>[FUNCTION_4]</strong></div>
+                    <div class="comparison-cell">[CONTROL_4]</div>
+                    <div class="comparison-cell">[PROHIBITED_4]</div>
+                </div>
+
+                <div class="comparison-row">
+                    <div class="comparison-cell"><strong>[FUNCTION_5]</strong></div>
+                    <div class="comparison-cell">[CONTROL_5]</div>
+                    <div class="comparison-cell">[PROHIBITED_5]</div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: var(--space-xl);">
+                <p style="color: var(--color-grey); font-style: italic; max-width: 700px; margin: 0 auto;">
+                    [CONTROLS_FOOTNOTE]
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Disclaimer Block -->
+    <section id="disclaimer" class="industries-section">
+        <div class="section-container">
+            <div class="disclaimer-block">
+                <h3 class="disclaimer-title">Important Disclaimer</h3>
+                <div class="disclaimer-text">
+                    <p><strong>[DISCLAIMER_PARA_1_TITLE]</strong></p>
+                    <p>[DISCLAIMER_PARA_1_TEXT]</p>
+
+                    <p style="margin-top: var(--space-md);"><strong>[DISCLAIMER_PARA_2_TITLE]</strong></p>
+                    <p>[DISCLAIMER_PARA_2_TEXT]</p>
+
+                    <p style="margin-top: var(--space-md);"><strong>[DISCLAIMER_PARA_3_TITLE]</strong></p>
+                    <p>[DISCLAIMER_PARA_3_TEXT]</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="engage-section">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">Implement Governed Controls</h2>
+                <p class="section-description">Ready to strengthen your governance framework?</p>
+            </div>
+
+            <div class="hero-cta-group">
+                <a href="../assessment/" class="btn-primary">Request Assessment</a>
+                <a href="../solutions/" class="btn-secondary">Explore Solutions</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="footer-tagline">Intelligence &amp; Governance Partner for High-Risk Industries</p>
+            <p class="footer-legal">
+                TechSafe Industries provides advisory, systems, and assurance services. We do not provide legal advice
+                or guarantee regulatory compliance outcomes.
+            </p>
+            <p class="footer-copyright">© 2026 TechSafe Industries. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        window.addEventListener('scroll', function () {
+            const nav = document.getElementById('mainNav');
+            if (window.scrollY > 50) {
+                nav.classList.add('compact');
+            } else {
+                nav.classList.remove('compact');
+            }
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>
