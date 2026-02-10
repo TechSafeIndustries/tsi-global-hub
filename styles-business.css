@@ -979,3 +979,942 @@ section {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* ============================
+   TSI Homepage Polish Layer
+   (safe overrides)
+   ============================ */
+
+:root {
+  --tsi-bg: #0A1F3E;
+  --tsi-blue: #2DB8F9;
+  --tsi-white: #FFFFFF;
+  --tsi-grey: #A6A6A6;
+}
+
+/* Global rhythm */
+body {
+  line-height: 1.5;
+}
+
+/* Make the header feel anchored */
+header,
+.header,
+.top-nav,
+.navbar {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* HERO: increase scale + reduce empty space */
+.hero,
+.hero-section,
+.home-hero {
+  padding: 84px 16px 48px !important;
+}
+
+.hero h1,
+.hero-title {
+  font-size: clamp(34px, 4vw, 56px) !important;
+  letter-spacing: -0.02em;
+  line-height: 1.08;
+  margin-bottom: 12px !important;
+}
+
+.hero p,
+.hero-subtitle,
+.hero-description {
+  font-size: clamp(14px, 1.25vw, 18px) !important;
+  color: rgba(255, 255, 255, 0.82) !important;
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* CTA buttons: consistent sizing and better contrast */
+.hero .btn,
+.hero button,
+.cta button,
+.cta a {
+  min-height: 44px;
+  padding: 12px 18px;
+  border-radius: 10px;
+}
+
+.hero .btn-primary,
+.btn-primary {
+  background: var(--tsi-blue) !important;
+  border-color: var(--tsi-blue) !important;
+  color: #061425 !important;
+  font-weight: 600;
+}
+
+.hero .btn-secondary,
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.06) !important;
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+  color: rgba(255, 255, 255, 0.92) !important;
+}
+
+/* Tabs/industry pills: tighten and modernise */
+.industry-tabs,
+.tabs,
+.pill-row {
+  gap: 10px !important;
+  margin-top: 18px !important;
+}
+
+.industry-tabs button,
+.tabs button,
+.pill-row button,
+.pill {
+  padding: 10px 12px !important;
+  border-radius: 999px !important;
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+  background: rgba(255, 255, 255, 0.04) !important;
+  color: rgba(255, 255, 255, 0.86) !important;
+}
+
+.industry-tabs button.active,
+.tabs button.active,
+.pill.active {
+  border-color: rgba(45, 184, 249, 0.55) !important;
+  background: rgba(45, 184, 249, 0.10) !important;
+  color: var(--tsi-white) !important;
+}
+
+/* Cards: lift + consistent sizing */
+.card,
+.framework-card,
+.info-card,
+.standards-card,
+.home-card {
+  border-radius: 14px !important;
+  border: 1px solid rgba(255, 255, 255, 0.10) !important;
+  background: rgba(255, 255, 255, 0.04) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.22);
+}
+
+.card h3,
+.framework-card h3,
+.info-card h3 {
+  font-size: 14px;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.section-description,
+.industry-description,
+.standards-description {
+  color: rgba(255, 255, 255, 0.80) !important;
+}
+
+/* Layout: stop content feeling tiny on wide screens */
+.container,
+.wrap,
+.content,
+main {
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Reduce "empty ocean" on big screens */
+@media (min-width: 1200px) {
+
+  .hero,
+  .hero-section,
+  .home-hero {
+    padding-top: 96px !important;
+    padding-bottom: 56px !important;
+  }
+}
+
+/* Mobile: keep it tight and readable */
+@media (max-width: 640px) {
+
+  .hero,
+  .hero-section,
+  .home-hero {
+    padding-top: 72px !important;
+  }
+
+  .hero h1,
+  .hero-title {
+    font-size: 34px !important;
+  }
+}
+
+/* Header logo sizing */
+header img,
+.navbar img,
+.logo img,
+.brand img {
+  height: 34px;
+  width: auto;
+  max-height: 34px;
+}
+
+/* If you have a dedicated logo class, this will take priority */
+.logo,
+.nav-logo,
+.navbar-logo,
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Desktop bump */
+@media (min-width: 900px) {
+
+  header img,
+  .navbar img,
+  .logo img,
+  .brand img {
+    height: 44px;
+    max-height: 44px;
+  }
+}
+
+/* Header polish: tighten height + anchor logo */
+header,
+.header,
+.top-nav,
+.navbar {
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+}
+
+header .container,
+.navbar .container,
+.header .container {
+  display: flex;
+  align-items: center;
+}
+
+/* Push logo slightly left with breathing room */
+header a,
+.navbar a,
+.header a {
+  text-decoration: none;
+}
+
+/* Logo sizing: stronger desktop presence */
+header img,
+.navbar img,
+.logo img,
+.brand img {
+  height: 52px !important;
+  max-height: 52px !important;
+  width: auto !important;
+}
+
+/* If nav is using flex, keep logo on the left */
+.navbar,
+header nav,
+.top-nav {
+  justify-content: space-between;
+}
+
+/* Mobile scale down */
+@media (max-width: 640px) {
+
+  header img,
+  .navbar img,
+  .logo img,
+  .brand img {
+    height: 40px !important;
+    max-height: 40px !important;
+  }
+}
+
+/* Header: make icon-only logo look intentional */
+header,
+.header,
+.navbar,
+.top-nav {
+  padding-left: 22px !important;
+  padding-right: 22px !important;
+}
+
+/* Move brand to the left if header layout is flex */
+header,
+.navbar,
+.top-nav {
+  display: flex;
+  align-items: center;
+}
+
+/* If you have a nav container, let it take the remaining space */
+header nav,
+.navbar nav,
+.top-nav nav {
+  margin-left: auto;
+}
+
+/* Logo container + subtle separator */
+.logo,
+.brand,
+.nav-logo,
+.navbar-logo,
+header a {
+  display: inline-flex;
+  align-items: center;
+  padding-right: 18px;
+  margin-right: 18px;
+  border-right: 1px solid rgba(255, 255, 255, 0.10);
+}
+
+/* Keep logo size strong but not oversized */
+header img,
+.navbar img,
+.logo img,
+.brand img {
+  height: 48px !important;
+  max-height: 48px !important;
+  width: auto !important;
+}
+
+@media (max-width: 640px) {
+
+  header,
+  .header,
+  .navbar,
+  .top-nav {
+    padding-left: 14px !important;
+    padding-right: 14px !important;
+  }
+
+  .logo,
+  .brand,
+  .nav-logo,
+  .navbar-logo,
+  header a {
+    padding-right: 12px;
+    margin-right: 12px;
+  }
+
+  header img,
+  .navbar img,
+  .logo img,
+  .brand img {
+    height: 38px !important;
+    max-height: 38px !important;
+  }
+}
+
+/* Industry pills: cleaner, consistent, responsive */
+.industry-tabs,
+.tabs,
+.pill-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px !important;
+}
+
+.industry-tabs button,
+.tabs button,
+.pill-row button,
+.pill {
+  min-width: 120px;
+  text-align: center;
+  padding: 10px 14px !important;
+  border-radius: 12px !important;
+  transition: transform 120ms ease, background 120ms ease, border-color 120ms ease;
+}
+
+.industry-tabs button:hover,
+.tabs button:hover,
+.pill-row button:hover,
+.pill:hover {
+  transform: translateY(-1px);
+  border-color: rgba(45, 184, 249, 0.40) !important;
+  background: rgba(255, 255, 255, 0.06) !important;
+}
+
+.industry-tabs button.active,
+.tabs button.active,
+.pill.active {
+  border-color: rgba(45, 184, 249, 0.70) !important;
+  background: rgba(45, 184, 249, 0.12) !important;
+}
+
+@media (max-width: 640px) {
+
+  .industry-tabs button,
+  .tabs button,
+  .pill-row button,
+  .pill {
+    min-width: unset;
+    flex: 1 1 46%;
+  }
+}
+
+/* Info cards: make them feel premium */
+.info-card,
+.framework-card,
+.standards-card,
+.card {
+  position: relative;
+  padding: 18px 18px 16px !important;
+}
+
+.info-card::before,
+.framework-card::before,
+.standards-card::before,
+.card::before {
+  content: "";
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  width: 4px;
+  height: calc(100% - 24px);
+  border-radius: 999px;
+  background: rgba(45, 184, 249, 0.55);
+  box-shadow: 0 0 0 1px rgba(45, 184, 249, 0.18);
+}
+
+.info-card h3,
+.framework-card h3,
+.standards-card h3,
+.card h3 {
+  padding-left: 12px;
+  margin-bottom: 8px !important;
+  font-size: 12px !important;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.74) !important;
+}
+
+.info-card p,
+.framework-card p,
+.standards-card p,
+.card p {
+  padding-left: 12px;
+  margin: 0 !important;
+  color: rgba(255, 255, 255, 0.88) !important;
+  font-weight: 600;
+}
+
+/* Small text inside cards */
+.info-card .muted,
+.framework-card .muted,
+.standards-card .muted {
+  color: rgba(255, 255, 255, 0.72) !important;
+  font-weight: 500;
+}
+
+/* Proof bar: premium cards with TSI accent */
+.proof-bar {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px !important;
+  margin-top: 18px !important;
+}
+
+.proof-item {
+  position: relative;
+  padding: 18px 18px 16px 22px !important;
+  border-radius: 14px !important;
+  border: 1px solid rgba(255, 255, 255, 0.10) !important;
+  background: rgba(255, 255, 255, 0.04) !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.22);
+}
+
+.proof-item::before {
+  content: "";
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  width: 4px;
+  height: calc(100% - 24px);
+  border-radius: 999px;
+  background: rgba(45, 184, 249, 0.60);
+  box-shadow: 0 0 0 1px rgba(45, 184, 249, 0.18);
+}
+
+.proof-label {
+  font-size: 12px !important;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.72) !important;
+  margin-bottom: 8px !important;
+}
+
+.proof-value {
+  color: rgba(255, 255, 255, 0.90) !important;
+  font-weight: 600;
+}
+
+@media (max-width: 900px) {
+  .proof-bar {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Industry strip: responsive grid (balanced rows) */
+.industry-strip-track {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 12px !important;
+  justify-content: center;
+}
+
+.industry-strip-item {
+  padding: 12px 14px !important;
+  border-radius: 14px !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  background: rgba(255, 255, 255, 0.04) !important;
+  color: rgba(255, 255, 255, 0.86) !important;
+  transition: transform 120ms ease, background 120ms ease, border-color 120ms ease;
+}
+
+.industry-strip-item:hover {
+  transform: translateY(-1px);
+  border-color: rgba(45, 184, 249, 0.45) !important;
+  background: rgba(255, 255, 255, 0.06) !important;
+}
+
+.industry-strip-item span {
+  display: block;
+  text-align: center;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Breakpoints */
+@media (max-width: 1100px) {
+  .industry-strip-track {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .industry-strip-track {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .industry-strip-item span {
+    white-space: normal;
+  }
+}
+
+/* Hero: full-bleed background image + overlay */
+.hero-section {
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(10, 31, 62, 0.92) 0%, rgba(10, 31, 62, 0.88) 40%, rgba(10, 31, 62, 0.94) 100%),
+    url("./assets/img/tech-monitor-factory.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.hero-section::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(800px 500px at 50% 35%, rgba(45, 184, 249, 0.14), rgba(0, 0, 0, 0) 60%),
+    radial-gradient(900px 600px at 15% 70%, rgba(255, 255, 255, 0.06), rgba(0, 0, 0, 0) 60%);
+  pointer-events: none;
+}
+
+.hero-container,
+.hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+/* -----------------------------
+   Industries Page Hero
+------------------------------ */
+.page-hero {
+  position: relative;
+  min-height: 56vh;
+  display: grid;
+  place-items: center;
+  padding: 110px 24px 56px;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.page-hero--industries {
+  background:
+    radial-gradient(1200px 600px at 50% 35%, rgba(45, 184, 249, 0.18), rgba(10, 31, 62, 0.0) 60%),
+    linear-gradient(180deg, rgba(10, 31, 62, 0.75), rgba(10, 31, 62, 0.92)),
+    url("./assets/img/hero-control-room.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.page-hero__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(10, 31, 62, 0.35), rgba(10, 31, 62, 0.88));
+  pointer-events: none;
+}
+
+.page-hero__content {
+  position: relative;
+  max-width: 980px;
+  text-align: center;
+}
+
+.page-hero__title {
+  margin: 0 0 12px;
+  font-size: clamp(36px, 4.5vw, 64px);
+  letter-spacing: 0.5px;
+}
+
+.page-hero__subtitle {
+  margin: 0 auto 24px;
+  max-width: 780px;
+  opacity: 0.9;
+  font-size: clamp(16px, 1.6vw, 20px);
+  line-height: 1.6;
+}
+
+.page-hero__highlights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 18px;
+}
+
+.hero-chip {
+  padding: 10px 14px;
+  border-radius: 999px;
+  font-size: 13px;
+  letter-spacing: 0.2px;
+  color: rgba(255, 255, 255, 0.92);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  backdrop-filter: blur(8px);
+}
+
+.industries-section {
+  padding-top: 64px;
+}
+
+/* === POLISH PASS v1: global layout consistency (do not break routing) === */
+:root {
+  --page-max: 1120px;
+  --page-pad: 24px;
+
+  --section-pad-y: 72px;
+  --section-pad-y-sm: 48px;
+}
+
+.section-container,
+.section-inner,
+.hero-inner,
+.nav-wrapper {
+  max-width: var(--page-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--page-pad);
+  padding-right: var(--page-pad);
+}
+
+/* Consistent vertical rhythm */
+.hero-section {
+  padding-top: var(--section-pad-y);
+  padding-bottom: var(--section-pad-y);
+}
+
+.section,
+.section-tight,
+.framework-section,
+.industries-section,
+.engage-section,
+.platforms-section,
+.standards-section,
+.contact-section {
+  padding-top: var(--section-pad-y);
+  padding-bottom: var(--section-pad-y);
+}
+
+/* Mobile spacing */
+@media (max-width: 768px) {
+  :root {
+    --page-pad: 16px;
+  }
+
+  .hero-section,
+  .section,
+  .section-tight,
+  .framework-section,
+  .industries-section,
+  .engage-section,
+  .platforms-section,
+  .standards-section,
+  .contact-section {
+    padding-top: var(--section-pad-y-sm);
+    padding-bottom: var(--section-pad-y-sm);
+  }
+}
+
+/* === POLISH PASS v2: nav + logo consistency === */
+.nav-container {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.nav-wrapper {
+  min-height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.nav-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand-logo,
+.tsi-logo,
+#tsi-logo {
+  height: 34px;
+  width: auto;
+  display: block;
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.nav-menu a {
+  line-height: 1;
+  padding: 10px 0;
+}
+
+@media (max-width: 768px) {
+  .nav-wrapper {
+    min-height: 64px;
+  }
+
+  .brand-logo,
+  .tsi-logo,
+  #tsi-logo {
+    height: 30px;
+  }
+
+  .nav-menu {
+    gap: 14px;
+  }
+}
+
+/* === POLISH PASS v3: hero readability + CTA spacing === */
+.hero-container,
+.hero-content {
+  max-width: 720px;
+}
+
+.hero-title {
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  margin-bottom: 14px;
+}
+
+.hero-subtitle {
+  line-height: 1.45;
+  margin-bottom: 18px;
+}
+
+.hero-points {
+  margin: 0 0 22px 0;
+  padding-left: 18px;
+}
+
+.hero-cta-group,
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.btn-primary,
+.btn-secondary,
+.btn,
+.btn--primary,
+.btn--secondary {
+  border-radius: 10px;
+}
+
+/* Slight lift on hover for modern feel */
+.btn-primary:hover,
+.btn-secondary:hover,
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+/* === POLISH PASS v4: cards === */
+.industry-card,
+.engage-card,
+.platform-card,
+.framework-card,
+.card {
+  border-radius: 14px;
+  transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+}
+
+.industry-card:hover,
+.engage-card:hover,
+.platform-card:hover,
+.framework-card:hover,
+.card:hover {
+  transform: translateY(-2px);
+}
+
+.industries-grid,
+.engage-grid,
+.platforms-grid,
+.framework-grid {
+  gap: 18px;
+}
+
+.industry-title,
+.engage-card-title,
+.platform-card h3,
+.framework-card-title {
+  margin-top: 0;
+}
+
+.industry-description,
+.engage-card-intro,
+.platform-card p,
+.framework-card-description {
+  line-height: 1.5;
+}
+
+/* === POLISH PASS v5: section visual separation === */
+.framework-section,
+.engage-section,
+.platforms-section,
+.contact-section {
+  position: relative;
+}
+
+.framework-section::before,
+.engage-section::before,
+.platforms-section::before,
+.contact-section::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 1px;
+  opacity: .25;
+  background: linear-gradient(90deg, transparent, rgba(45, 184, 249, .9), transparent);
+}
+
+.section-header {
+  max-width: 760px;
+}
+
+.section-title {
+  letter-spacing: -0.015em;
+  line-height: 1.15;
+}
+
+.section-description,
+.section-intro {
+  line-height: 1.55;
+}
+
+/* === POLISH PASS v6: footer + forms === */
+.footer {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.footer-tagline {
+  margin: 0 0 10px 0;
+  line-height: 1.4;
+}
+
+.footer-legal {
+  margin: 0 0 10px 0;
+  opacity: .85;
+  line-height: 1.5;
+}
+
+.contact-form .form-row {
+  gap: 16px;
+}
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+  border-radius: 10px;
+  padding: 12px 14px;
+}
+
+.btn-form-submit {
+  border-radius: 10px;
+  padding: 12px 16px;
+}
+
+/* === INDUSTRY-SPECIFIC HERO BACKGROUNDS === */
+.industry-mining .hero-section {
+  background-image: linear-gradient(rgba(10, 31, 62, .78), rgba(10, 31, 62, .78)), url('assets/industry/mining.jpg') !important;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.industry-oil-gas .hero-section {
+  background-image: linear-gradient(rgba(10, 31, 62, .78), rgba(10, 31, 62, .78)), url('assets/industry/oil-gas.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.industry-construction .hero-section {
+  background-image: linear-gradient(rgba(10, 31, 62, .78), rgba(10, 31, 62, .78)), url('assets/industry/construction.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.industry-energy-renewables .hero-section {
+  background-image: linear-gradient(rgba(10, 31, 62, .78), rgba(10, 31, 62, .78)), url('assets/industry/energy-renewables.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.industry-manufacturing .hero-section {
+  background-image: linear-gradient(rgba(10, 31, 62, .78), rgba(10, 31, 62, .78)), url('assets/industry/manufacturing.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.industry-transport-logistics .hero-section {
+  background-image: linear-gradient(rgba(10, 31, 62, .78), rgba(10, 31, 62, .78)), url('assets/industry/transport-logistics.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.industry-aviation .hero-section {
+  background-image: linear-gradient(rgba(10, 31, 62, .78), rgba(10, 31, 62, .78)), url('assets/industry/aviation.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
