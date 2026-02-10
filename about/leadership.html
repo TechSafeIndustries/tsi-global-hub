@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="TechSafe Industries Leadership Experience Matrix">
+    <title>Leadership Experience Matrix | TechSafe Industries</title>
+    <link rel="icon" type="image/png" href="../logo_tsi_bbg01.png">
+    <style>
+        :root {
+            --navy-bg: #0a1628;
+            --navy-card: #152238;
+            --cyan-accent: #2db8f9;
+            --cyan-glow: rgba(45, 184, 249, 0.15);
+            --text-white: #ffffff;
+            --text-grey: #94a3b8;
+            --border-color: rgba(148, 163, 184, 0.2);
+            --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-primary);
+            background: var(--navy-bg);
+            color: var(--text-white);
+            line-height: 1.6;
+            padding: 24px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: rgba(21, 34, 56, 0.6);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 32px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 32px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .header-left {
+            flex: 1;
+        }
+
+        .company-name {
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: var(--text-white);
+            margin-bottom: 4px;
+            letter-spacing: -0.02em;
+        }
+
+        .subtitle {
+            font-size: 1rem;
+            color: var(--cyan-accent);
+            font-weight: 500;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .tsi-logo {
+            width: 64px;
+            height: 64px;
+            object-fit: contain;
+            filter: brightness(1.1);
+        }
+
+        /* Legend */
+        .legend {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 24px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.75rem;
+            color: var(--text-grey);
+        }
+
+        .legend-square {
+            width: 10px;
+            height: 10px;
+            background: var(--cyan-accent);
+            border-radius: 2px;
+        }
+
+        /* Leader Cards */
+        .leaders {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .leader-card {
+            background: var(--navy-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .leader-card:hover {
+            border-color: var(--cyan-accent);
+            background: rgba(21, 34, 56, 0.9);
+            box-shadow: 0 4px 24px var(--cyan-glow);
+        }
+
+        .leader-header {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 16px;
+        }
+
+        .avatar {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #2db8f9 0%, #1a8ecf 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-white);
+            flex-shrink: 0;
+            border: 3px solid rgba(45, 184, 249, 0.2);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .avatar-text {
+            position: relative;
+            z-index: 1;
+        }
+
+        .leader-info {
+            flex: 1;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .leader-details {
+            flex: 1;
+        }
+
+        .leader-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-white);
+            margin-bottom: 4px;
+        }
+
+        .leader-title {
+            font-size: 0.95rem;
+            color: var(--text-grey);
+            font-weight: 400;
+        }
+
+        .years-badge {
+            background: rgba(45, 184, 249, 0.1);
+            border: 1px solid rgba(45, 184, 249, 0.3);
+            border-radius: 8px;
+            padding: 8px 16px;
+            text-align: right;
+        }
+
+        .years-number {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--text-white);
+            display: block;
+            line-height: 1;
+        }
+
+        .years-label {
+            font-size: 0.75rem;
+            color: var(--text-grey);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Experience Bar */
+        .experience-bar-container {
+            margin-bottom: 16px;
+        }
+
+        .experience-bar-bg {
+            width: 100%;
+            height: 8px;
+            background: rgba(148, 163, 184, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .experience-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #2db8f9 0%, #1a8ecf 100%);
+            border-radius: 4px;
+            transition: width 0.6s ease;
+        }
+
+        /* Description */
+        .leader-description {
+            font-size: 0.95rem;
+            color: var(--text-grey);
+            font-style: italic;
+            line-height: 1.6;
+        }
+
+        /* Note */
+        .note {
+            margin-top: 32px;
+            padding-top: 24px;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.875rem;
+            color: var(--text-grey);
+            font-style: italic;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .logo-container {
+                align-self: flex-start;
+            }
+
+            .leader-header {
+                flex-direction: column;
+            }
+
+            .leader-info {
+                flex-direction: column;
+                gap: 16px;
+            }
+
+            .years-badge {
+                align-self: flex-start;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="header-left">
+                <h1 class="company-name">TechSafe Industries</h1>
+                <p class="subtitle">Leadership Experience Matrix</p>
+            </div>
+            <div class="logo-container">
+                <img src="../logo_tsi_bbg01.png" alt="TSI Logo" class="tsi-logo">
+            </div>
+        </div>
+
+        <!-- Legend -->
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-square"></div>
+                <span>Exp. in years</span>
+            </div>
+        </div>
+
+        <!-- Leaders -->
+        <div class="leaders">
+            <!-- Michael Solomon -->
+            <div class="leader-card">
+                <div class="leader-header">
+                    <div class="avatar">
+                        <img src="./images/michael.jpg" alt="Michael Solomon">
+                    </div>
+                    <div class="leader-info">
+                        <div class="leader-details">
+                            <h2 class="leader-name">Michael Solomon</h2>
+                            <p class="leader-title">Founder | HSSE, Security, Risk & Emergency Management</p>
+                        </div>
+                        <div class="years-badge">
+                            <span class="years-number">20</span>
+                            <span class="years-label">Years</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="experience-bar-container">
+                    <div class="experience-bar-bg">
+                        <div class="experience-bar" style="width: 50%;"></div>
+                    </div>
+                </div>
+                <p class="leader-description">
+                    "The Integrator" — multi-site HSSE leadership, governance, investigations, regulator-facing
+                    delivery.
+                </p>
+            </div>
+
+            <!-- Carey Peina -->
+            <div class="leader-card">
+                <div class="leader-header">
+                    <div class="avatar">
+                        <img src="./images/carey.jpg" alt="Carey Peina">
+                    </div>
+                    <div class="leader-info">
+                        <div class="leader-details">
+                            <h2 class="leader-name">Carey Peina</h2>
+                            <p class="leader-title">Safety Superintendent | WHS, Auditing, Training</p>
+                        </div>
+                        <div class="years-badge">
+                            <span class="years-number">20</span>
+                            <span class="years-label">Years</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="experience-bar-container">
+                    <div class="experience-bar-bg">
+                        <div class="experience-bar" style="width: 50%;"></div>
+                    </div>
+                </div>
+                <p class="leader-description">
+                    "The Builder" — site safety leadership, audits, training systems, practical risk control uplift.
+                </p>
+            </div>
+
+            <!-- Tama Robson -->
+            <div class="leader-card">
+                <div class="leader-header">
+                    <div class="avatar">
+                        <img src="./images/tama.jpg" alt="Tama Robson">
+                    </div>
+                    <div class="leader-info">
+                        <div class="leader-details">
+                            <h2 class="leader-name">Tama Robson</h2>
+                            <p class="leader-title">HSEQ Executive | ISO Systems, Risk & Safety Culture</p>
+                        </div>
+                        <div class="years-badge">
+                            <span class="years-number">19</span>
+                            <span class="years-label">Years</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="experience-bar-container">
+                    <div class="experience-bar-bg">
+                        <div class="experience-bar" style="width: 47.5%;"></div>
+                    </div>
+                </div>
+                <p class="leader-description">
+                    "The Stabiliser" — ISO governance resets, investigations, risk controls, safety culture uplift.
+                </p>
+            </div>
+
+            <!-- Warren Rowe -->
+            <div class="leader-card">
+                <div class="leader-header">
+                    <div class="avatar">
+                        <img src="./images/warren.jpg" alt="Warren Rowe">
+                    </div>
+                    <div class="leader-info">
+                        <div class="leader-details">
+                            <h2 class="leader-name">Warren Rowe</h2>
+                            <p class="leader-title">Emergency Management — Plans & Strategy | Operations Consultant</p>
+                        </div>
+                        <div class="years-badge">
+                            <span class="years-number">40</span>
+                            <span class="years-label">Years</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="experience-bar-container">
+                    <div class="experience-bar-bg">
+                        <div class="experience-bar" style="width: 100%;"></div>
+                    </div>
+                </div>
+                <p class="leader-description">
+                    "The Strategist" — readiness, incident command, investigations, training, operational discipline.
+                </p>
+            </div>
+
+            <!-- Clinton McCaughan -->
+            <div class="leader-card">
+                <div class="leader-header">
+                    <div class="avatar">
+                        <img src="./images/clinton.jpg" alt="Clinton McCaughan">
+                    </div>
+                    <div class="leader-info">
+                        <div class="leader-details">
+                            <h2 class="leader-name">Clinton McCaughan</h2>
+                            <p class="leader-title">Integrated Services Manager | GM / Key Account Management</p>
+                        </div>
+                        <div class="years-badge">
+                            <span class="years-number">18</span>
+                            <span class="years-label">Years</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="experience-bar-container">
+                    <div class="experience-bar-bg">
+                        <div class="experience-bar" style="width: 45%;"></div>
+                    </div>
+                </div>
+                <p class="leader-description">
+                    "The Operator" — stakeholder delivery, governance, operational performance, client outcomes.
+                </p>
+            </div>
+        </div>
+
+        <!-- Note -->
+        <div class="note">
+            Notes: Bars scale against the highest value (40 years). Adjust the "Tests" values if you want a different
+            basis.
+        </div>
+    </div>
+</body>
+
+</html>
