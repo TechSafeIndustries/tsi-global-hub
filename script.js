@@ -66,21 +66,21 @@ class DiagnosticFunnel {
   getResultData(score) {
     if (score >= 4) {
       return {
-        badge: '🚨 CRITICAL HURT POINTS',
+        badge: 'ðŸš¨ CRITICAL HURT POINTS',
         color: 'linear-gradient(135deg, #EF4444, #B91C1C)',
         title: 'Your Organisation Is Operating on Luck',
         description: 'Multiple critical gaps detected. Fragmented systems, reactive management, and compliance blind spots are costing you millions in lost productivity. An HSE Business Assessment will identify exactly where you\'re bleeding margin and how to stop it.'
       };
     } else if (score >= 2) {
       return {
-        badge: '⚠️ MODERATE RISK',
+        badge: 'âš ï¸ MODERATE RISK',
         color: 'linear-gradient(135deg, #F59E0B, #D97706)',
         title: 'You Have Manageable Gaps with High-Risk Exposure',
         description: 'Some systems are working, but blind spots remain. Without unified intelligence, you\'re vulnerable to cascade failures. Our assessment will show you where integration can eliminate risk and boost productivity.'
       };
     } else {
       return {
-        badge: '✓ LOW RISK - OPTIMISE FURTHER',
+        badge: 'âœ“ LOW RISK - OPTIMISE FURTHER',
         color: 'linear-gradient(135deg, #10B981, #059669)',
         title: 'Strong Foundation, Room for Excellence',
         description: 'You\'re managing well, but even high-performing organisations have optimisation opportunities. Let us identify where advanced intelligence can take you from good to industry-leading.'
@@ -180,7 +180,7 @@ class FloatingSAI {
     this.messages = [
       "Still relying on luck? Let's fix that.",
       "Fragmented systems cost you millions. I can show you where.",
-      "Take the diagnostic—it only takes 2 minutes.",
+      "Take the diagnostic — it only takes 2 minutes.",
       "Your competitors are integrating. Are you?",
       "Blind spots don't fix themselves. Let's talk."
     ];
@@ -235,7 +235,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
-  console.log('🚀 TechSafe Productivity Intelligence initializing...');
+  console.log('ðŸš€ TechSafe Productivity Intelligence initializing...');
 
   new DiagnosticFunnel();
   new ModalHandler();
@@ -243,5 +243,6 @@ document.addEventListener('DOMContentLoaded', () => {
   new NavigationController();
   new FloatingSAI();
 
-  console.log('✅ All systems operational. Stop operating on luck.');
+  console.log('âœ… All systems operational. Stop operating on luck.');
 });
+

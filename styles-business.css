@@ -1,4 +1,4 @@
-/* ===================================
+﻿/* ===================================
    TSI BUSINESS - AUTHORITY SITE
    Enterprise Industrial Style
    Australian English
@@ -1869,51 +1869,51 @@ header img,
   padding: 12px 16px;
 }
 
-/* === INDUSTRY-SPECIFIC HERO BACKGROUNDS === */
-.industry-mining .hero-section {
-  background-image: linear-gradient(rgba(10, 31, 62, .78), rgba(10, 31, 62, .78)), url('assets/industry/mining.jpg') !important;
+/* === FORCE INDUSTRY HERO (must be last in file) === */
+body.industry-mining .hero-section {
+  background-image: linear-gradient(rgba(10, 31, 62, .78), rgba(10, 31, 62, .78)), url('/assets/industry/mining.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 
-.industry-oil-gas .hero-section {
-  background-image: linear-gradient(rgba(10, 31, 62, .78), rgba(10, 31, 62, .78)), url('assets/industry/oil-gas.jpg');
+body.industry-oil-gas .hero-section {
+  background-image: linear-gradient(rgba(10, 31, 62, .78), rgba(10, 31, 62, .78)), url('/assets/industry/oil-gas.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 
-.industry-construction .hero-section {
-  background-image: linear-gradient(rgba(10, 31, 62, .78), rgba(10, 31, 62, .78)), url('assets/industry/construction.jpg');
+body.industry-construction .hero-section {
+  background-image: linear-gradient(rgba(10, 31, 62, .78), rgba(10, 31, 62, .78)), url('/assets/industry/construction.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 
-.industry-energy-renewables .hero-section {
-  background-image: linear-gradient(rgba(10, 31, 62, .78), rgba(10, 31, 62, .78)), url('assets/industry/energy-renewables.jpg');
+body.industry-energy-renewables .hero-section {
+  background-image: linear-gradient(rgba(10, 31, 62, .78), rgba(10, 31, 62, .78)), url('/assets/industry/energy-renewables.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 
-.industry-manufacturing .hero-section {
-  background-image: linear-gradient(rgba(10, 31, 62, .78), rgba(10, 31, 62, .78)), url('assets/industry/manufacturing.jpg');
+body.industry-manufacturing .hero-section {
+  background-image: linear-gradient(rgba(10, 31, 62, .78), rgba(10, 31, 62, .78)), url('/assets/industry/manufacturing.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 
-.industry-transport-logistics .hero-section {
-  background-image: linear-gradient(rgba(10, 31, 62, .78), rgba(10, 31, 62, .78)), url('assets/industry/transport-logistics.jpg');
+body.industry-transport-logistics .hero-section {
+  background-image: linear-gradient(rgba(10, 31, 62, .78), rgba(10, 31, 62, .78)), url('/assets/industry/transport-logistics.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 }
 
-.industry-aviation .hero-section {
-  background-image: linear-gradient(rgba(10, 31, 62, .78), rgba(10, 31, 62, .78)), url('assets/industry/aviation.jpg');
+body.industry-aviation .hero-section {
+  background-image: linear-gradient(rgba(10, 31, 62, .78), rgba(10, 31, 62, .78)), url('/assets/industry/aviation.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
